@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTC</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body >
+<div id="app">
+    <transition name="slide-fade">
+    <div v-if="main">
+        <header v-if="header">
+            <a href="#" @click="showAll" class="logo">Treasury Tenis Club</a>
+            <ul><li><a @click="klikRanking" href="#">Rankings</a></li></ul>
+            <ul><li><a @click="klikPlayers" href="#">Players</a></li></ul>
+            <ul><li><a @click="klikTurnamen"href="#">Turnament</a></li></ul>
+            <i @click="mklikMenu" class="fas fa-bars"></i>
+        </header>
+        
+        <section class="banner" v-if="section">
+
+            <div v-if="jumbo" style="margin-top: 100px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
+
+                <img  class="gambar" src="https://gdurl.com/5jc4" alt="">
+                <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero minima necessitatibus, fuga explicabo, architecto itaque repellendus consectetur voluptatem in cupiditate at culpa similique. Vitae harum quae consectetur at eos nesciunt.</span></p>
+            </div>
+
+            <!-- <img src="https://gdurl.com/5jc4" alt=""> -->
+        <transition name="slide-fade">
+            <div v-if="show_player" class="show_player">
+                <h1>Treasury Tennis Club Players</h1>
+                <br><br>
+                <!-- {{urutPlayers}} -->
+                <div class="row">
+                    <div  v-for="x in urutPlayers" class="column" @click="klikPlayer(x)">
+                    <div class="card">
+                        <img style="width: 100%;" :src="x.foto" alt="">
+                        <p>{{x.player}}</p>
+                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
+                    </div>
+                    </div>
+                
+
+                </div>
+            </div>
+        </transition>
+<!-- {{rankings}}
+{{players}} -->
+        <transition name="slide-fade">
+            <div v-if="show_single_player" >
+                
+                <br><br>
+                <!-- {{urutPlayers}} -->
+                <div style="margin-top:100px;" class="row1">
+                    <!-- {{selectedPlayer}} -->
+                    <div class="column1" @click="klikPlayer(x)">
+                    <div class="card1">
+                        <img class="gambar-profil" style="width: 50%;" :src="selectedPlayer[1].foto" alt="">
+                        <div class="dataprofil">
+                            <table class="tabelprofil" >
+                                <tr>
+                                    <td width="20%">
+                                        Nama
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[0].player}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Ranking
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[0].row - 1}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Points
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[0].totalPoint}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Age
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].age}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Plays
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].Plays}}
+                                    </td>
+                                </tr>
+                            </table>
+  
+                        </div>
+
+                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
+                    </div>
+                    </div>
+                
+
+                </div>
+            </div>
+        </transition>
+
+
+        <transition name="slide-fade">
+        <div v-if="show_ranking" class="ranking">
+            <h2  style="text-align: center; margin-top: 125px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">Treasury Tennis Club  Ranking</h2>
+            <table style=" border: 1px solid white;">
+                <thead>
+                    <tr style=" border: 1px solid white;">
+                        <th style="width: 20%; border: 1px solid white;">Ranking</th>
+                        <th style="width: 40%; text-align: center; border: 1px solid white;">Player</th>
+                        <!-- <th>Age</th> -->
+                        <th style=" border: 1px solid white;">Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style=" border: 1px solid white;" v-for="x,index in rankings">
+                        <td style="border: 1px solid white;" >{{index+1}}</td>
+                        <td @click="klikPlayer(x)" style="padding-left: 10px; width: 40%; text-align: left; border: 1px solid white;">{{x.player}}</td>
+                        <!-- <td>48 YO</td> -->
+                        <td style="border: 1px solid white;">{{x.totalPoint}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        </transition>
+
+            
+        </section>
+    
+    </div>
+    </transition>
+
+<transition name="slide-fade">
+    <div class="menu" v-if="show_menu">
+
+        <div style="display: flex; justify-content: space-between;"><h1>Menu  </h1> <h1 @click="show_menu = false; main = true; section=true; show_player=true;" style="color:red;">x</h1></div>
+        <ul><li><a @click="klikRanking" href="#">Rankings</a></li></ul>
+        <ul><li><a @click="klikPlayers" href="#">Players</a></li></ul>
+        <ul><li><a @click="klikTurnamen" href="#">Turnament</a></li></ul>
+    </div>
+</transition>
+</div>
+
+
+<script type="text/javascript">
+        window.addEventListener("scroll", function(){
+            var header = document.querySelector("header");
+            header.classList.toggle("sticky", window.scrollY > 0);
+        })
+        </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="js.js"></script>
+</body>
+</html>

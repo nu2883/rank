@@ -1,0 +1,277 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: sans-serif;
+}
+body{
+    background: #000;
+    min-height: 300vh;
+    color: white;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.6s;
+    padding: 40px 40px;
+    z-index: 100000;
+}
+header.sticky{
+    padding: 5px 40px;
+    background-color: #fff;
+}
+header .logo{
+    position: relative;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.6s;
+    float: left;
+    /* justify-self: flex-start; */
+}
+header ul{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+
+}
+header ul li{
+  position: relative;  
+  list-style: none;
+}
+header .fa-bars,
+header ul li a {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    /* color: greenyellow; */
+    letter-spacing: 2px;
+    font-weight: 500px;
+    transition: 0.6s;
+}
+.banner {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* background: url('https://gdurl.com/5jc4'); */
+    background-size: cover;
+}
+
+header.sticky .logo,
+header.sticky .fa-bars,
+header.sticky ul li a{
+    color: #000;
+}
+/* header.stycky .fa-bars{
+    color: #000;
+} */
+@media(min-width : 991px){
+    header .fa-bars{
+        display: none;
+    }
+}
+@media(max-width : 991px){
+    header .logo{
+        display: inline;
+        padding: 0 5px;
+        font-size: 13px;
+        font-weight: 100px;
+    }
+    .fa-bars{
+        display: block;
+    }
+    header ul{
+        display: none;
+    }
+
+}
+table{
+    width: 90%;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+}
+table td{
+    text-align: center;
+
+}
+.gambar{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+.menu{
+    position: fixed;
+    margin-top: 50px;
+    width: 200px;
+    text-align: left;
+    color: white;
+    font-size: 25px;
+    font-weight: 250px;
+    margin-left: 100px;
+    
+    
+}
+.menu h1{
+    margin-bottom: 50px;
+
+}
+.menu ul{
+    margin-bottom: 50px;
+}
+.menu ul li a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+.show_player{
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: auto;
+}
+
+/* Float four columns side by side */
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 558px) {
+    .column {
+      width: 50%;
+      display: block;
+      
+    }
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: white;
+        margin-bottom: 20px;
+        color: burlywood;
+      }
+  }
+  
+  /* Style the counter cards */
+  .card {
+    border-radius: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+    color: blue;
+  }
+
+  /* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+    transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+  /* Float four columns side by side */
+.column1 {
+    float: left;
+    width: 95%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row1 {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  .row1:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 558px) {
+    .column1 {
+        text-align: center;
+      width: 95%;
+      display: block;
+      
+    }
+    .card1 {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        background-color: white;
+        margin-bottom: 20px;
+        color: burlywood;
+      }
+      .tabelprofil{
+        width:100%;
+        text-align: left;
+        color: black;
+        font-size: 5px;
+    }
+  }
+  .card1 {
+    margin-left: 5%;
+    display: flex;
+    border-radius: 5%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+    color: blue;
+  }
+  .gambar-profil{
+    display: block;
+    margin-left: 10px;
+    width: 50%;
+}
+.dataprofil{
+    margin-left: 5%;
+    text-align: left;
+}
+.tabelprofil{
+    width:100%;
+    text-align: left;
+    color: black;
+    font-size: 20px;
+}
+.tabelprofil td{
+    text-align: left;
+    /* text-justify: center; */
+    vertical-align: top;
+    
+}
