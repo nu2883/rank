@@ -140,19 +140,26 @@ table td{
 .show_player{
     text-align: center;
     margin-top: 100px;
-    margin-left: 50px;
-    margin-right: auto;
+    /* margin-left: 50px; */
+    /* margin-right: auto; */
 }
 
 /* Float four columns side by side */
+.row {
+  /* margin: auto; */
+  width: 100%;
+  /* text-align: center; */
+  
+
+}
 .column {
     float: left;
     width: 25%;
-    padding: 0 10px;
+    padding: 0 7px;
+    
   }
   
   /* Remove extra left and right margins, due to padding */
-  .row {margin: 0 -5px;}
   
   /* Clear floats after the columns */
   .row:after {
@@ -164,7 +171,7 @@ table td{
   /* Responsive columns */
   @media screen and (max-width: 558px) {
     .column {
-      width: 50%;
+      width: 33%;
       display: block;
       
     }
@@ -274,4 +281,22 @@ table td{
     /* text-justify: center; */
     vertical-align: top;
     
+}
+
+.turnament{
+    text-align: center;
+    margin-top:100px;
+
+}
+
+.column2 {
+    float: left;
+    width: 30%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  .row2 {
+    /* margin: auto; */
+    width: 90%;
 }

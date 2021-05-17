@@ -4,16 +4,20 @@ var app = new Vue({
       message: 'Hello Vue!',
       show_menu:false,
       main:true,
+      turnamens:[],
       rankings:[],
       players:[],
       matchs:[],
       data_match:[],
+      points:[],
+      data_point:[],
       data_matchs:true,
       matchs:[],
       header:true,
       section:true,
       show_ranking:true,
       show_player:true,
+      show_turnamen:true,
       jumbo:true,
       show_single_player:false,
 
@@ -32,6 +36,17 @@ var app = new Vue({
     
         return this.players.sort(compare);
       },
+      urutTurnaments(){
+        function compare(a, b) {
+          if (a.row > b.row)
+            return -1;
+          if (a.row < b.row)
+            return 1;
+          return 0;
+        }
+    
+        return this.turnamens.sort(compare);
+      },
       data_match_sort(){
         function compare1(a, b) {
           if (a.row > b.row)
@@ -42,6 +57,17 @@ var app = new Vue({
         }
     
         return this.data_match[0].sort(compare1);
+      },
+      data_point_sort(){
+        function compare1(a, b) {
+          if (a.row > b.row)
+            return -1;
+          if (a.row < b.row)
+            return 1;
+          return 0;
+        }
+    
+        return this.data_point.sort(compare1);
       }
 
 
@@ -54,6 +80,7 @@ var app = new Vue({
           this.show_player = false;
           this.jumbo = false;
           this.show_ranking = false;
+          this.show_turnamen = false;
           this.show_single_player = false;
 
         },
@@ -63,6 +90,7 @@ var app = new Vue({
           this.show_player = true;
           this.jumbo = true;
           this.show_ranking = true;
+          this.show_turnamen = true;
           this.show_single_player = false;
 
         },
@@ -98,14 +126,22 @@ var app = new Vue({
 
             this.data_match = [data_match1];
             
+            var data_point = [];
+            data_point = this.points.filter(x => x.id === id.id);
+            this.data_point = data_point;
+            // console.log(selectedPlayer1);
             
             var ranking_player = data_ranking.concat(data_player);
 
+
+
             var selectedPlayer1 = ranking_player.concat([this.data_match_sort]);
+
+            var selectedPlayer2 = selectedPlayer1.concat([this.data_point_sort]);
             console.log(selectedPlayer1);
 
 
-          return this.selectedPlayer = selectedPlayer1;
+          return this.selectedPlayer = selectedPlayer2;
         
         },
         klikRanking(){
@@ -114,6 +150,14 @@ var app = new Vue({
           this.showOff();
           this.header = true;
           this.show_ranking = true;
+
+        },
+        klikTurnamen(){
+          this.show_menu = false;
+          this.main = true;
+          this.showOff();
+          this.header = true;
+          this.show_turnamen = true;
 
         },
         klikPlayers(){
@@ -129,6 +173,7 @@ var app = new Vue({
           this.main = true;
           this.header = true;
           this.show_menu = false;
+          this.show_turnamen = true;
           
 
         }
@@ -137,6 +182,7 @@ var app = new Vue({
     },
 
     created(){
+      // ambil data rangking
       this.rankings = [];
 
       var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=QPoints";
@@ -168,6 +214,28 @@ var app = new Vue({
       // console.log(json.data.records)
       app.matchs = json.data;
       });
+
+            // ambil data point
+            this.matchs = [];
+
+            var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=points";
+      
+            $.getJSON(url, function (json) {
+            // console.log(json.data);
+            // console.log(json.data.records)
+            app.points = json.data;
+            });
+
+            // ambil data turnament
+            this.turnamens = [];
+
+            var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=turnament";
+      
+            $.getJSON(url, function (json) {
+            // console.log(json.data);
+            // console.log(json.data.records)
+            app.turnamens = json.data;
+            });
 
     },
 

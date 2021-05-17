@@ -31,6 +31,54 @@
                 <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero minima necessitatibus, fuga explicabo, architecto itaque repellendus consectetur voluptatem in cupiditate at culpa similique. Vitae harum quae consectetur at eos nesciunt.</span></p>
             </div>
 
+            <transition name="slide-fade">
+                    <div v-if="show_turnamen" class="turnament">
+                        <h1>Treasury Tennis Club Turnaments</h1>
+                        <br><br>
+                        <!-- {{turnamens}} -->
+                        <div style="display: flex; justify-content: center;">
+                            <div  v-for="x in urutTurnaments" class="column2" >
+                                <div class="card2">
+                                    <img style="width: 100%;" :src="x.foto" alt="">
+                                    <h4>{{x.nama}}</h4>
+                                    <h5>{{x.tanggal}}</h5>
+                                    <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
+                                </div>
+                            </div>
+                        
+        
+                        </div>
+                    </div>
+                </transition>
+
+
+                <transition name="slide-fade">
+                        <div v-if="show_ranking" class="ranking">
+                            <h2  style="text-align: center; margin-top: 125px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">Treasury Tennis Club  Ranking</h2>
+                            <table style=" border: 1px solid white;">
+                                <thead>
+                                    <tr style=" border: 1px solid white;">
+                                        <th style="width: 20%; border: 1px solid white;">Ranking</th>
+                                        <th style="width: 40%; text-align: center; border: 1px solid white;">Player</th>
+                                        <!-- <th>Age</th> -->
+                                        <th style=" border: 1px solid white;">Points</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style=" border: 1px solid white;" v-for="x,index in rankings">
+                                        <td style="border: 1px solid white;" >{{index+1}}</td>
+                                        <td @click="klikPlayer(x)" style="padding-left: 10px; width: 40%; text-align: left; border: 1px solid white;">{{x.player}}</td>
+                                        <!-- <td>48 YO</td> -->
+                                        <td style="border: 1px solid white;">{{x.totalPoint}}</td>
+                                    </tr>
+                
+                                </tbody>
+                            </table>
+                        </div>
+                        </transition>
+
+
+
             <!-- <img src="https://gdurl.com/5jc4" alt=""> -->
         <transition name="slide-fade">
             <div v-if="show_player" class="show_player">
@@ -39,11 +87,11 @@
                 <!-- {{urutPlayers}} -->
                 <div class="row">
                     <div  v-for="x in urutPlayers" class="column" @click="klikPlayer(x)">
-                    <div class="card">
-                        <img style="width: 100%;" :src="x.foto" alt="">
-                        <p>{{x.player}}</p>
-                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
-                    </div>
+                        <div class="card">
+                            <img style="width: 100%;" :src="x.foto" alt="">
+                            <p>{{x.player}}</p>
+                            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
+                        </div>
                     </div>
                 
 
@@ -171,7 +219,16 @@
                                 <!-- {{selectedPlayer}} -->
                                 <!-- {{ data_match_sort}} -->
                             <ul>
-                                    <li v-for="x in selectedPlayer[2]">{{x.turnamen}} ({{x.level}} besar) : <br><span style="color:black;"> {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}}</span> ( {{x.score}} )</li>
+                                    <li v-for="x in selectedPlayer[2]">{{x.turnamen}} ({{x.babak}}) : <br><span style="color:black;"> {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}}</span> ( {{x.score}} )</li>
+                                </ul>
+
+
+                                <br>
+                            <h1>Latest Turnament : </h1>
+                                <!-- {{selectedPlayer}} -->
+                                <!-- {{ data_match_sort}} -->
+                            <ul>
+                                    <li v-for="x in selectedPlayer[3]">{{x.turnamen}} ({{x.capaian}}) : <br><span style="color:black;"> {{x.point}} Point</li>
                                 </ul>
   
                         </div>
@@ -188,36 +245,17 @@
         </transition>
 
 
-        <transition name="slide-fade">
-        <div v-if="show_ranking" class="ranking">
-            <h2  style="text-align: center; margin-top: 125px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">Treasury Tennis Club  Ranking</h2>
-            <table style=" border: 1px solid white;">
-                <thead>
-                    <tr style=" border: 1px solid white;">
-                        <th style="width: 20%; border: 1px solid white;">Ranking</th>
-                        <th style="width: 40%; text-align: center; border: 1px solid white;">Player</th>
-                        <!-- <th>Age</th> -->
-                        <th style=" border: 1px solid white;">Points</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style=" border: 1px solid white;" v-for="x,index in rankings">
-                        <td style="border: 1px solid white;" >{{index+1}}</td>
-                        <td @click="klikPlayer(x)" style="padding-left: 10px; width: 40%; text-align: left; border: 1px solid white;">{{x.player}}</td>
-                        <!-- <td>48 YO</td> -->
-                        <td style="border: 1px solid white;">{{x.totalPoint}}</td>
-                    </tr>
 
-                </tbody>
-            </table>
-        </div>
-        </transition>
 
             
         </section>
     
     </div>
     </transition>
+
+
+
+
 
 <transition name="slide-fade">
     <div class="menu" v-if="show_menu">
