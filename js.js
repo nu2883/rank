@@ -6,11 +6,14 @@ var app = new Vue({
       main:true,
       rankings:[],
       players:[],
-      show_player:true,
-      selectedPlayer:[],
+      matchs:[],
+      data_match:[],
+      data_matchs:true,
+      matchs:[],
       header:true,
       section:true,
       show_ranking:true,
+      show_player:true,
       jumbo:true,
       show_single_player:false,
 
@@ -28,7 +31,21 @@ var app = new Vue({
         }
     
         return this.players.sort(compare);
+      },
+      data_match_sort(){
+        function compare1(a, b) {
+          if (a.row > b.row)
+            return -1;
+          if (a.row < b.row)
+            return 1;
+          return 0;
+        }
+    
+        return this.data_match[0].sort(compare1);
       }
+
+
+
     },
     methods:{
         showOff(){
@@ -46,6 +63,7 @@ var app = new Vue({
           this.show_player = true;
           this.jumbo = true;
           this.show_ranking = true;
+          this.show_single_player = false;
 
         },
         mklikMenu(){
@@ -60,21 +78,34 @@ var app = new Vue({
           this.show_single_player = true;
           // this.selectedPlayer = x;
           // alert(x.id);
-          this.ambil_data_player(x.id);
+          this.ambil_data_player(x);
 
         },
         ambil_data_player(id){
           this.selectedPlayer = [];
             var data_ranking = [];
-            data_ranking = this.rankings.filter(x => x.id === id);
-            console.log(data_ranking);
+            data_ranking = this.rankings.filter(x => x.id === id.id);
+            // console.log(data_ranking);
 
             var data_player = [];
-            data_player = this.players.filter(x => x.id === id);
-          var selectedPlayer1 = data_ranking.concat(data_player);
-          console.log(selectedPlayer1);
+            data_player = this.players.filter(x => x.id === id.id);
+            var selectedPlayer1 = data_ranking.concat(data_player);
+            // console.log(selectedPlayer1);
 
-          return this.selectedPlayer = data_ranking.concat(data_player);
+            var data_match1 = [];
+            data_match1 = this.matchs.filter(x => x.player1 == id.player||x.player2 == id.player||x.player3 == id.player ||x.player4 == id.player);
+            console.log(data_match1);
+
+            this.data_match = [data_match1];
+            
+            
+            var ranking_player = data_ranking.concat(data_player);
+
+            var selectedPlayer1 = ranking_player.concat([this.data_match_sort]);
+            console.log(selectedPlayer1);
+
+
+          return this.selectedPlayer = selectedPlayer1;
         
         },
         klikRanking(){
@@ -125,6 +156,17 @@ var app = new Vue({
       // console.log(json.data);
       // console.log(json.data.records)
       app.players = json.data;
+      });
+
+      // ambil data match
+      this.matchs = [];
+
+      var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=match";
+
+      $.getJSON(url, function (json) {
+      // console.log(json.data);
+      // console.log(json.data.records)
+      app.matchs = json.data;
       });
 
     },

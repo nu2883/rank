@@ -65,7 +65,7 @@
                         <div class="dataprofil">
                             <table class="tabelprofil" >
                                 <tr>
-                                    <td width="20%">
+                                    <td width="25%">
                                         Nama
                                     </td>
                                     <td>:</td>
@@ -102,6 +102,51 @@
                                 </tr>
                                 <tr>
                                     <td>
+                                        Turned Pro
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].TurnedPro}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Weight
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].Weight}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Height
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].Height}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Birthplace
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].Birthplace}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Residence
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].Residence}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
                                         Plays
                                     </td>
                                     <td>:</td>
@@ -109,16 +154,36 @@
                                         {{selectedPlayer[1].Plays}}
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        Coach
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        {{selectedPlayer[1].Coach}}
+                                    </td>
+                                </tr>
+      
+                                
                             </table>
+                            <br><br>
+                            <h1>Latest Match : </h1>
+                                <!-- {{selectedPlayer}} -->
+                                <!-- {{ data_match_sort}} -->
+                            <ul>
+                                    <li v-for="x in selectedPlayer[2]">{{x.turnamen}} ({{x.level}} besar) : <br><span style="color:black;"> {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}}</span> ( {{x.score}} )</li>
+                                </ul>
   
                         </div>
 
                         <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
                     </div>
                     </div>
-                
+
 
                 </div>
+
+
             </div>
         </transition>
 
