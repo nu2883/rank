@@ -16,7 +16,12 @@
     <transition name="slide-fade">
     <div v-if="main">
         <header v-if="header">
-            <a href="#" @click="showAll" class="logo">Treasury Tenis Club</a>
+            <div class="logoCenter">
+                <a href="#" @click="showAll" class="logo">
+                    <img class="img" src="https://gdurl.com/U_qr/" alt="logo" >
+                    <span> Treasury Tennis Club</span>
+                </a>
+            </div>
             <ul><li><a @click="klikRanking" href="#">Rankings</a></li></ul>
             <ul><li><a @click="klikPlayers" href="#">Players</a></li></ul>
             <ul><li><a @click="klikTurnamen"href="#">Turnament</a></li></ul>
@@ -109,7 +114,7 @@
                     <!-- {{selectedPlayer}} -->
                     <div class="column1" @click="klikPlayer(x)">
                     <div class="card1">
-                        <img class="gambar-profil" style="width: 50%;" :src="selectedPlayer[1].foto" alt="">
+                        <img class="gambar-profil"  :src="selectedPlayer[1].foto" alt="">
                         <div class="dataprofil">
                             <table class="tabelprofil" >
                                 <tr>
