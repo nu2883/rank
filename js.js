@@ -20,6 +20,8 @@ var app = new Vue({
       show_turnamen:true,
       jumbo:true,
       show_single_player:false,
+      show_single_turnamen:false,
+      satu_turnamen:[],
 
 
 
@@ -68,7 +70,8 @@ var app = new Vue({
         }
     
         return this.data_point.sort(compare1);
-      }
+      },
+
 
 
 
@@ -82,6 +85,7 @@ var app = new Vue({
           this.show_ranking = false;
           this.show_turnamen = false;
           this.show_single_player = false;
+          this.show_single_turnamen = false;
 
         },
         showAll(){
@@ -105,7 +109,7 @@ var app = new Vue({
           this.section = true;
           this.show_single_player = true;
           // this.selectedPlayer = x;
-          // alert(x.id);
+          console.log(x);
           this.ambil_data_player(x);
 
         },
@@ -122,7 +126,7 @@ var app = new Vue({
 
             var data_match1 = [];
             data_match1 = this.matchs.filter(x => x.player1 == id.player||x.player2 == id.player||x.player3 == id.player ||x.player4 == id.player);
-            console.log(data_match1);
+            // console.log(data_match1);
 
             this.data_match = [data_match1];
             
@@ -138,7 +142,7 @@ var app = new Vue({
             var selectedPlayer1 = ranking_player.concat([this.data_match_sort]);
 
             var selectedPlayer2 = selectedPlayer1.concat([this.data_point_sort]);
-            console.log(selectedPlayer1);
+            // console.log(selectedPlayer1);
 
 
           return this.selectedPlayer = selectedPlayer2;
@@ -176,7 +180,22 @@ var app = new Vue({
           this.show_turnamen = true;
           
 
+        },
+        klik_satu_turnamen(xx){
+          this.showOff();
+          this.main = true;
+          this.header = true;
+          this.show_menu = false;
+          this.show_turnamen = false;
+          this.show_single_turnamen = true;
+
+          var abc = this.points.filter(x => x.turnamen == xx.nama);
+          var bcd = this.matchs.filter(x => x.turnamen == xx.nama);
+          var foto = xx.foto;
+          var nama_turnamen = xx.nama;
+          return this.satu_turnamen = [abc, bcd, foto, nama_turnamen];
         }
+
 
 
     },

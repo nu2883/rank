@@ -429,3 +429,40 @@ table td{
     width: 90%;
 }
 
+.singleTurnamen{
+    margin-top: 150px;
+    text-align: center;
+}
+
+.singleTurnamen .gambar{
+    margin-top: 25px;
+    width: 90%;
+}
+
+.singleTurnamen .peserta{
+    margin-top: 25px;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    /* background-color: white; */
+    
+}
+
+.singleTurnamen .peserta .player{
+    margin: 5px;
+    width: 100px;
+    height: 60px;
+    border-radius: 30% 30%;
+    padding-top: 2px;
+    background-color: white;
+    color: black;
+    
+}
+
+.singleTurnamen .peserta .player .nama{
+    
+    color: black;
+}

@@ -42,7 +42,7 @@
                         <br><br>
                         <!-- {{turnamens}} -->
                         <div style="display: flex; justify-content: center;">
-                            <div  v-for="x in urutTurnaments" class="column2" >
+                            <div   v-for="x in urutTurnaments" class="column2" @click="klik_satu_turnamen(x)">
                                 <div class="card2">
                                     <img style="width: 100%;" :src="x.foto" alt="">
                                     <h4>{{x.nama}}</h4>
@@ -64,15 +64,15 @@
                                 <thead>
                                     <tr style=" border: 1px solid white;">
                                         <th style="width: 20%; border: 1px solid white;">Ranking</th>
-                                        <th style="width: 40%; text-align: center; border: 1px solid white;">Player</th>
+                                        <th style="width: 60%; text-align: center; border: 1px solid white;">Player</th>
                                         <!-- <th>Age</th> -->
                                         <th style=" border: 1px solid white;">Points</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr style=" border: 1px solid white;" v-for="x,index in rankings">
+                                    <tr style=" border: 1px solid white;" v-for="x,index in rankings" @click="klikPlayer(x)">
                                         <td style="border: 1px solid white;" >{{index+1}}</td>
-                                        <td @click="klikPlayer(x)" style="padding-left: 10px; width: 40%; text-align: left; border: 1px solid white;">{{x.player}}</td>
+                                        <td  style="padding-left: 10px; width: 40%; text-align: left; border: 1px solid white;">{{x.player}}</td>
                                         <!-- <td>48 YO</td> -->
                                         <td style="border: 1px solid white;">{{x.totalPoint}}</td>
                                     </tr>
@@ -249,6 +249,40 @@
             </div>
         </transition>
 
+
+        <transition name="slide-fade">
+                <div v-if="show_single_turnamen" class="singleTurnamen">
+                    <h1>{{satu_turnamen[3]}}</h1>
+                    <div>
+                        <img class="gambar" :src="satu_turnamen[2]" alt="">
+                    </div>
+                    <br>
+                    <h1>Peserta Pertandingan</h1> <br>
+                    <div class="peserta">
+                        <div v-for="x in satu_turnamen[0]" class="player">
+                            
+                            <br>
+                            <span @click="klikPlayer(x)" class="nama">{{x.player}}</span> 
+                        </div>
+                    </div>
+<br><br>
+                    <div >
+                        <h1>Hasil Pertandingan</h1> <br>
+                        <!-- {{satu_turnamen}} -->
+                        <div v-for="x in satu_turnamen[1]" class="player">
+                            <li>{{x.babak}} : {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}} <b >({{x.score}})</b></li> <br>
+                        </div>
+                    </div>
+
+                    <!-- {{satu_turnamen}}
+<br> <br>
+                    {{turnamens}} <br><br>
+
+                    {{peserta_turnamen}} <br><br>
+
+                    {{points}} -->
+                </div>
+            </transition>
 
 
 
