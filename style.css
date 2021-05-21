@@ -388,9 +388,9 @@ table td{
   
   /* Style the counter cards */
   .card {
-border-radius: 5%;
+    border-radius: 5%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+    padding: 7px;
     text-align: center;
     background-color: #f1f1f1;
     margin-bottom: 10px;
