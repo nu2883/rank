@@ -193,7 +193,8 @@ var app = new Vue({
           var bcd = this.matchs.filter(x => x.turnamen == xx.nama);
           var foto = xx.foto;
           var nama_turnamen = xx.nama;
-          return this.satu_turnamen = [abc, bcd, foto, nama_turnamen];
+          var dokumentasi = xx.dokumentasi;
+          return this.satu_turnamen = [abc, bcd, foto, nama_turnamen, dokumentasi];
         }
 
 
