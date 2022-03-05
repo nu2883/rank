@@ -23,12 +23,22 @@ var app = new Vue({
     show_single_turnamen:false,
     event:true,
     satu_turnamen:[],
-    events:[],
+    event:[],
 
 
 
   },
   computed:{
+    HasilPertandingan: function(){
+      return this.event.filter((blog) => {
+          return blog.status =='2'
+      });
+    },
+    events: function(){
+      return this.event.filter((blog) => {
+          return blog.status =='1'
+      });
+    },
     urutPlayers(){
       function compare(a, b) {
         if (a.player < b.player)
@@ -210,14 +220,14 @@ var app = new Vue({
 
   created(){
     // ambil data event
-    this.events = [];
+    this.event = [];
 
     var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=Qevent";
 
     $.getJSON(url, function (json) {
     // console.log(json.data);
     // console.log(json.data.records)
-    app.events = json.data;
+    app.event = json.data;
     });
     // ambil data rangking
     this.rankings = [];
