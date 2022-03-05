@@ -35,13 +35,13 @@
         </header>
 
                             <!-- hari baper kecil -->
-                            <div class="container baperkecil " v-if="event">
+                            <div class="container baperkecil " v-if="show_event">
                                 <br><br><br><br><br><br>
                         
                                 <div class="row text-center mb-5  mx-auto">
                                     <!-- {{events}} -->
                                     <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN TAHUN 2022</h1></div> <HR></HR>
-                                    <div class="mb-5" v-for="x, index in events">
+                                    <div v-if="events.length > 0" class="mb-5" v-for="x, index in events">
                                         <div class="col-12 text-primary"><h2>tanggal {{x.tanggal}}</h2></div><br>
                                         <div class="col-12"><h5>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h5></div>
                                         <div v-if="x.tim1player11"  class="row col-12 text-center mt-5 mx-auto ">
@@ -154,14 +154,14 @@
                             <!-- hari baper kecil -->
 
                     <!-- hari baper -->
-                    <div class="container baper " v-if="event">
+                    <div class="container baper " v-if="show_event">
                         <br><br><br><br><br><br>
                 
                         <div class="row text-center mb-5">
                             <!-- {{events}} -->
 
                             <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN TAHUN 2022</h1></div> <HR></HR>
-                            <div class="mb-5" v-for="x, index in events">
+                            <div v-if="events.length > 0" class="mb-5" v-for="x, index in events">
                                 <div class="col-12 text-primary"><h2>tanggal {{x.tanggal}}</h2></div><br>
                                 <div class="col-12"><h1>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h1></div>
                                 <div v-if="x.tim1player11"  class="row col-12 text-center mt-5 ">
@@ -273,7 +273,7 @@
         
                     <!-- hari baper -->
                     <!-- {{events}} -->
-                    <div class="container " style="background-color: aliceblue;">
+                    <div v-if="show_event" class="container " style="background-color: aliceblue;">
                         <table class="table">
                             <thead>
                               <tr class="text-center">
@@ -283,7 +283,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr v-for="x, index in HasilPertandingan">
+                              <tr v-if="HasilPertandingan.length > 0" v-for="x, index in HasilPertandingan">
                                 <td scope="row">{{index+1}}</td>
                                 <td>
                                    <span class="text-primary">{{x.tanggal}}</span>  <br>

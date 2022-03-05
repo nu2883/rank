@@ -21,7 +21,7 @@ var app = new Vue({
     jumbo:false,
     show_single_player:false,
     show_single_turnamen:false,
-    event:true,
+    show_event:true,
     satu_turnamen:[],
     event:[],
 
@@ -98,7 +98,7 @@ var app = new Vue({
         this.show_turnamen = false;
         this.show_single_player = false;
         this.show_single_turnamen = false;
-        this.event = false;
+        this.show_event = false;
         
 
       },
@@ -110,7 +110,7 @@ var app = new Vue({
         this.show_ranking = true;
         this.show_turnamen = true;
         this.show_single_player = false;
-        this.event = true;
+        this.show_event = true;
         this.section =true ;
 
       },
