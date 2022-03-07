@@ -22,8 +22,12 @@ var app = new Vue({
     show_single_player:false,
     show_single_turnamen:false,
     show_event:true,
+    show_slide:false,
     satu_turnamen:[],
-    event:[],
+    event: [],
+    current: 0,
+    width: 800,
+    timer: 0,
 
 
 
@@ -212,13 +216,63 @@ var app = new Vue({
         var tgl = xx.tanggal;
         var dokumentasi = xx.dokumentasi;
         return this.satu_turnamen = [abc, bcd, foto, nama_turnamen, dokumentasi, tgl];
-      }
+    },
+      
+    nextSlide() {
+      this.current++;
+      if (this.current >= this.players.length)
+        this.current = 0;
+      this.resetPlay();
+    },
+    prevSlide: function() {
+      this.current--;
+      if (this.current < 0)
+        this.current = this.players.length - 1;
+      this.resetPlay();
+    },
+    selectSlide: function(i) {
+      this.current = i;
+      this.resetPlay();
+    },
+    resetPlay: function() {
+      clearInterval(this.timer);
+      this.play();
+    },
+    play () {
+      // alert('dfsafd')
+      this.timer = setInterval(function() {
+        app.nextSlide();
+        
+      }, 4000);
+    },
+    mulai () {
+      // alert('dfsafd')
+      setTimeout (function() {
+        app.showOff();
+        app.show_slide = true;
+        app.play();
+      }, 5000);
+    },
+    stop_slide () {
+      app.show_slide = false;
+      app.main = true;
+      app.header = true;
+      app.show_event = true;
+      setTimeout (function() {
+        app.mulai();
+      }, 600000);
+    },
+
 
 
 
   },
 
-  created(){
+  created() {
+    // play slide show
+    
+    this.mulai ()
+
     // ambil data event
     this.event = [];
 

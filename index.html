@@ -34,14 +34,24 @@
             <i @click="mklikMenu" class="fas fa-bars"></i>
         </header>
 
+
+
                             <!-- hari baper kecil -->
                             <div class="container baperkecil " v-if="show_event">
                                 <br><br><br><br><br><br>
                         
-                                <div class="row text-center mb-5  mx-auto">
+                                <div class="row text-center mb-3  mx-auto">
                                     <!-- {{events}} -->
-                                    <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN TAHUN 2022</h1></div> <HR></HR>
-                                    <div v-if="events.length > 0" class="mb-5" v-for="x, index in events">
+                            <!-- <div class="col-12 "><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN</h1></div> -->
+
+                            
+                                                <div class="mb-3"  style=" color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
+
+                                                    <img  style="width: 120%; margin-left:-10%; " class="gambar" src="https://lh3.googleusercontent.com/pw/AM-JKLXPU-cGorfGzC9Sy2IJk1NOy3rU3Z3Jcb7sbNbAWNZyHEIgxEW2pmC4dJsG7rfSnrar-NIfJQcIAEOON7wDruhjx-POoBRwwPENQyHC8F7SUBPAOkf-D05qHxZJPjjVtA1I-Rbvdhxc4gLXV8nw8Ti02A=w1280-h426-no?authuser=0" alt="">
+                                                    
+                                                </div>
+
+                                    <div v-if="events.length > 0" class="mb-3" v-for="x, index in events">
                                         <div class="col-12 text-primary"><h2>tanggal {{x.tanggal}}</h2></div><br>
                                         <div class="col-12"><h5>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h5></div>
                                         <div v-if="x.tim1player11"  class="row col-12 text-center mt-5 mx-auto ">
@@ -145,6 +155,7 @@
                         
                         
                                         </div>
+                                        <hr>
                                     </div>
                         
                                 </div>
@@ -157,10 +168,18 @@
                     <div class="container baper " v-if="show_event">
                         <br><br><br><br><br><br>
                 
-                        <div class="row text-center mb-5">
+                        <div class="row text-center mb-3">
                             <!-- {{events}} -->
 
-                            <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN TAHUN 2022</h1></div> <HR></HR>
+                            <!-- <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN</h1></div> -->
+
+                            
+                                                <div class="mb-4"  style="margin-top: 30px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
+
+                                                    <img  style="width: 120%; margin-left:-10%;"  class="gambar" src="https://lh3.googleusercontent.com/pw/AM-JKLXPU-cGorfGzC9Sy2IJk1NOy3rU3Z3Jcb7sbNbAWNZyHEIgxEW2pmC4dJsG7rfSnrar-NIfJQcIAEOON7wDruhjx-POoBRwwPENQyHC8F7SUBPAOkf-D05qHxZJPjjVtA1I-Rbvdhxc4gLXV8nw8Ti02A=w1280-h426-no?authuser=0" alt="">
+                                                    
+                                                </div>
+
                             <div v-if="events.length > 0" class="mb-5" v-for="x, index in events">
                                 <div class="col-12 text-primary"><h2>tanggal {{x.tanggal}}</h2></div><br>
                                 <div class="col-12"><h1>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h1></div>
@@ -300,6 +319,12 @@
                             </tbody>
                           </table>
                     </div>
+
+
+
+             
+                        
+
         
         <section class="banner" v-if="section">
 
@@ -307,7 +332,7 @@
             <div v-if="jumbo" style="margin-top: 100px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
 
                 <img  class="gambar" src="https://gdurl.com/5jc4" alt="">
-                <p><span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero minima necessitatibus, fuga explicabo, architecto itaque repellendus consectetur voluptatem in cupiditate at culpa similique. Vitae harum quae consectetur at eos nesciunt.</span></p>
+                <p><span>Ramudik Cup</span></p>
             </div>
 
             <transition name="slide-fade">
@@ -583,16 +608,30 @@
 
 
 
+
 <transition name="slide-fade">
     <div class="menu" v-if="show_menu">
-
-        <div style="display: flex; justify-content: space-between;"><h1>Menu  </h1> <h1 @click="show_menu = false; main = true; section=true; show_player=true;" style="color:red;">x</h1></div>
+        <div style="display: flex; justify-content: space-between;"><h1></h1> <h1 @click="show_menu = false; main = true; section=true; show_player=true;" style="color:red;">x</h1></div>
         <ul><li><a @click="klikRanking" href="#">Rankings</a></li></ul>
         <ul><li><a @click="klikPlayers" href="#">Players</a></li></ul>
         <ul><li><a @click="klikTurnamen" href="#">Turnament</a></li></ul>
     </div>
 </transition>
+
+<div v-if="show_slide" class="loading text-center" >
+    <div class="container mt-2" style="display: flex; justify-content: space-between;"><h1>Galeri Treasury Tennis Club</h1> <h1 @click="stop_slide" style="color:red;">x</h1></div>
+    
+    <div class="container text-center mt-2">
+        <h2>  {{players[current].player}}  </h2>
+        <img style="width: 80%;" class="mx-auto " v-if="players.length > 0" :src="players[current].foto" alt="">
+    </div>
 </div>
+
+
+</div>
+
+
+
 
 
 <script type="text/javascript">
@@ -600,7 +639,10 @@
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);
         })
-        </script>
+
+
+
+</script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
