@@ -218,6 +218,12 @@ var app = new Vue({
         return this.satu_turnamen = [abc, bcd, foto, nama_turnamen, dokumentasi, tgl];
     },
       
+    nextSlide() {
+      this.current++;
+      if (this.current >= this.players.length)
+        this.current = 0;
+      this.resetPlay();
+    },
 
     play () {
       // alert('dfsafd')
@@ -229,7 +235,7 @@ var app = new Vue({
     mulai () {
       // alert('dfsafd')
       setTimeout (function() {
-        this.showOff();
+        app.showOff();
         this.show_slide = true;
         app.play();
       }, 5000);
