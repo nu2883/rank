@@ -130,8 +130,8 @@ header.sticky ul li a {
 
   .gambar-profil {
     display: block;
-    margin-left: 10px;
-    width: 50%;
+    /* margin-left: 10px; */
+    width: 100%;
   }
   .dataprofil {
     margin-left: 5%;

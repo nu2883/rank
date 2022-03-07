@@ -390,7 +390,7 @@
                 <br><br>
                 <!-- {{urutPlayers}} -->
                 <div class="row">
-                    <div  v-for="x in urutPlayers" class="column" @click="klikPlayer(x)">
+                    <div  v-for="x in urutPlayers" style="width: 30%; height: 100%;" @click="klikPlayer(x)">
                         <div class="card">
                             <img style="width: 100%;" :src="x.foto" alt="">
                             <p>{{x.player}}</p>
@@ -405,138 +405,145 @@
 <!-- {{rankings}}
 {{players}} -->
         <transition name="slide-fade">
-            <div v-if="show_single_player" >
+            <div v-if="show_single_player" class="mx-auto">
                 
                 <br><br>
                 <!-- {{urutPlayers}} -->
                 <div style="margin-top:100px;" class="row1">
                     <!-- {{selectedPlayer}} -->
                     <div class="column1" @click="klikPlayer(x)">
-                    <div class="card1">
-                        <img class="gambar-profil"  :src="selectedPlayer[1].foto" alt="">
-                        <div class="dataprofil">
-                            <table class="tabelprofil" >
-                                <tr>
-                                    <td width="25%">
-                                        Nama
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[0].player}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Ranking
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[0].row - 1}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Points
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[0].totalPoint}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Age
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].age}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Turned Pro
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].TurnedPro}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Weight
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].Weight}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Height
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].Height}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Birthplace
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].Birthplace}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Residence
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].Residence}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Plays
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].Plays}}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Coach
-                                    </td>
-                                    <td>:</td>
-                                    <td>
-                                        {{selectedPlayer[1].Coach}}
-                                    </td>
-                                </tr>
-      
-                                
-                            </table>
-                            
-                            <br><br>
-                            <h1>Latest Match : </h1>
-                                <!-- {{selectedPlayer}} -->
-                                <!-- {{ data_match_sort}} -->
-                            <ul>
-                                    <li v-for="x in selectedPlayer[2]">{{x.turnamen}} ({{x.babak}}) : <br><span style="color:black;"> {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}}</span> ( {{x.score}} )</li>
-                                </ul>
-
-
-                                <br>
-                            <h1>Latest Turnament : </h1>
-                                <!-- {{selectedPlayer}} -->
-                                <!-- {{ data_match_sort}} -->
-                            <ul>
-                                    <li v-for="x in selectedPlayer[3]">{{x.turnamen}} ({{x.capaian}}) : <br><span style="color:black;"> {{x.point}} Point</li>
-                                </ul>
-  
+                    <div class="card1 row">
+                        <div class="col-md-6 col-xs-12">
+                            <img class="gambar-profil mx-auto"  :src="selectedPlayer[1].foto" alt="">
                         </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="dataprofil">
+                                <table class="tabelprofil" >
+                                    <tr>
+                                        <td width="25%">
+                                            Nama
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[0].player}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Ranking
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[0].row - 1}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Points
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[0].totalPoint}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Age
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].age}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Turned Pro
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].TurnedPro}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Weight
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].Weight}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Height
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].Height}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Birthplace
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].Birthplace}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Residence
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].Residence}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Plays
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].Plays}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Coach
+                                        </td>
+                                        <td>:</td>
+                                        <td>
+                                            {{selectedPlayer[1].Coach}}
+                                        </td>
+                                    </tr>
+        
+                                    
+                                </table>
+                                
+                                <br><br>
+                                <h1>Latest Match : </h1>
+                                    <!-- {{selectedPlayer}} -->
+                                    <!-- {{ data_match_sort}} -->
+                                <ul>
+                                        <li v-for="x in selectedPlayer[2]">{{x.turnamen}} ({{x.babak}}) : <br><span style="color:black;"> {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}}</span> ( {{x.score}} )</li>
+                                    </ul>
+
+
+                                    <br>
+                                <h1>Latest Turnament : </h1>
+                                    <!-- {{selectedPlayer}} -->
+                                    <!-- {{ data_match_sort}} -->
+                                <ul>
+                                        <li v-for="x in selectedPlayer[3]">{{x.turnamen}} ({{x.capaian}}) : <br><span style="color:black;"> {{x.point}} Point</li>
+                                    </ul>
+    
+                            </div>
+                        </div>
+                        
+                        
+
 
                         <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
                     </div>
