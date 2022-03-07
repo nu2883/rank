@@ -619,9 +619,10 @@
 </transition>
 
 <div v-if="show_slide" class="loading text-center" >
-    <div class="container mt-2" style="display: flex; justify-content: space-between;"><h1>Galeri Treasury Tennis Club</h1> <h1 @click="stop_slide" style="color:red;">x</h1></div>
+    <div class="container mt-2" style="display: flex; justify-content: space-between;"><h1>Treasury Tennis Club Player</h1> <h1 @click="stop_slide" style="color:red;">x</h1></div>
     
     <div class="container text-center mt-2">
+
         <h2>  {{players[current].player}}  </h2>
         <img style="width: 80%;" class="mx-auto " v-if="players.length > 0" :src="players[current].foto" alt="">
     </div>

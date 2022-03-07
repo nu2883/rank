@@ -222,22 +222,9 @@ var app = new Vue({
       this.current++;
       if (this.current >= this.players.length)
         this.current = 0;
-      this.resetPlay();
+      
     },
-    prevSlide: function() {
-      this.current--;
-      if (this.current < 0)
-        this.current = this.players.length - 1;
-      this.resetPlay();
-    },
-    selectSlide: function(i) {
-      this.current = i;
-      this.resetPlay();
-    },
-    resetPlay: function() {
-      clearInterval(this.timer);
-      this.play();
-    },
+
     play () {
       // alert('dfsafd')
       this.timer = setInterval(function() {
@@ -251,13 +238,14 @@ var app = new Vue({
         app.showOff();
         app.show_slide = true;
         app.play();
+        // alert('jlkjfkldjsfd')
       }, 5000);
     },
     stop_slide () {
-      app.show_slide = false;
-      app.main = true;
-      app.header = true;
-      app.show_event = true;
+      this.show_slide = false;
+      this.main = true;
+      this.header = true;
+      this.show_event = true;
       setTimeout (function() {
         app.mulai();
       }, 600000);
