@@ -258,7 +258,7 @@ var app = new Vue({
   created() {
     // play slide show
     
-    app.mulai ()
+    this.mulai ()
 
     // ambil data event
     this.event = [];
