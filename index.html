@@ -33,17 +33,12 @@
             <ul class="my-auto"><li><a @click="klikTurnamen"href="#">Turnament</a></li></ul>
             <i @click="mklikMenu" class="fas fa-bars"></i>
         </header>
-
-
-
-                            <!-- hari baper kecil -->
+        
+                                              <!-- hari baper kecil -->
                             <div class="container baperkecil " v-if="show_event">
                                 <br><br><br><br><br><br>
                         
                                 <div class="row text-center mb-3  mx-auto">
-                                    <!-- {{events}} -->
-                            <!-- <div class="col-12 "><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN</h1></div> -->
-
                             
                                                 <div class="mb-3"  style=" color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
 
@@ -51,107 +46,245 @@
                                                     
                                                 </div>
 
-                                    <div v-if="events.length > 0" class="mb-3" v-for="x, index in events">
-                                        <div class="col-12 text-primary"><h2>tanggal {{x.tanggal}}</h2></div><br>
+                                    <div style="width:120%; margin-left:-20%;" v-if="events.length > 0" class="mb-1 mx-auto " v-for="x, index in events">
+                                        <div class="col-12 text-primary"><h5>tanggal {{x.tanggal}}</h5></div>
                                         <div class="col-12"><h5>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h5></div>
-                                        <div v-if="x.tim1player11"  class="row col-12 text-center mt-5 mx-auto ">
-                                            <h2>Pertandingan 1</h2>
-                                            <div class="row align-items-center mb-5 ">
+
+                                        <div style="width:110%; left:-4%;" v-if="x.tim1player11"  class="row col-12 text-center mx-auto  ">
+
+                                            <h4 class="text-warning  mb-3">Pertandingan 1</h4>
+                                            <div style="width:100%;"  class="row align-items-left mb-4 ">
                                                 <div class="col-5 ">
-                                                    <div class="row col-12  mx-auto">
-                                                        <div class="col-6 text-center align-items-top ">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto1"  alt="Cinque Terre">
-                                                            <span >{{x.tim1player11}}</span>
+                                                    <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                        <div class="col-6 text-center">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto1"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim1player11}}</span>
                                                         </div>
-                                                        <div class="col-6 text-center align-items-top ">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto2"  alt="Cinque Terre">
-                                                            <span >{{x.tim1player12}}</span>
+                                                        <div class="col-6">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto2"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim1player12}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    <h1 class="text-danger">vs</h1> <br>
-                                                    <span v-if="x.hasil1">{{x.hasil1}}</span>
+                                                <div class="col-2 align-self-center text-center">
+                                                    <h1 class="text-danger ">vs</h1> <br>
+                                                    <span style="font-size:80%; top:-20%;"  v-if="x.hasil1">{{x.hasil1}}</span>
                                                 </div>
                                                 <div class="col-5 ">
-                                                    <div class="row col-12  mx-auto align-items-start">
-                                                        <div class="col-6 text-center align-items-top ">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto6"  alt="Cinque Terre">
-                                                            <span >{{x.tim2player11}}</span>
+                                                    <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                        <div class="col-6 text-center">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto7"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim2player11}}</span>
                                                         </div>
-                                                        <div class="col-6 text-center align-items-start ">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto7"  alt="Cinque Terre">
-                                                            <span >{{x.tim2player12}}</span>
+                                                        <div class="col-6">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto8"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim2player12}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                        
-                                            <h2>Pertandingan 2</h2>
-                                            <div class="row align-items-center mb-5">
-                                                <div class="col-5 ">
-                                                    <div class="row col-12  mx-auto ">
-                                                        <div class="col-6 text-center">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto3"  alt="Cinque Terre">
-                                                            <span >{{x.tim1player21}}</span>
+
+                                                <h4 class="text-warning  mb-3">Pertandingan 2</h4>
+                                                <div style="width:100%;"  class="row align-items-left mb-4 ">
+                                                    <div class="col-5 ">
+                                                        <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                            <div class="col-6 text-center">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto3"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim1player21}}</span>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto4"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim1player22}}</span>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto4"  alt="Cinque Terre">
-                                                            <span >{{x.tim1player22}}</span>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                        <span style="font-size:80%;"  v-if="x.hasil1">{{x.hasil2}}</span>
+                                                    </div>
+                                                    <div class="col-5 ">
+                                                        <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                            <div class="col-6 text-center">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto9"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim2player21}}</span>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto10"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim2player22}}</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    <h1 class="text-danger">vs</h1> <br>
-                                                    <span v-if="x.hasil2">{{x.hasil2}}</span>
-                                                </div>
-                                                <div class="col-5 ">
-                                                    <div class="row col-12  mx-auto">
-                                                        <div class="col-6 text-center">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto8"  alt="Cinque Terre">
-                                                            <span >{{x.tim2player21}}</span>
+
+                                                <h4 class="text-warning  mb-3">Pertandingan 3</h4>
+                                                <div style="width:100%;"  class="row align-items-left mb-4 ">
+                                                        <div class="col-5 ">
+                                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                                <div class="col-6 text-center">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto5"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim1player31}}</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto6"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim1player32}}</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto9"  alt="Cinque Terre">
-                                                            <span >{{x.tim2player22}}</span>
+                                                        <div class="col-2 align-self-center text-center">
+                                                            <h1 class="text-danger ">vs</h1> <br>
+                                                            <span style="font-size:80%;" v-if="x.hasil1">{{x.hasil3}}</span>
+                                                        </div>
+                                                        <div class="col-5 ">
+                                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                                <div class="col-6 text-center">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto11"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim2player31}}</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto12"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim2player32}}</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+
+                                            <!-- <div class="container-fluid mb-4" >
+                                                <div class="row" style="left:2%;">
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                
+                                                                    <img style="width: 80%; margin-left:-10%; " class="rounded-circle"   :src="x.foto1"  alt="Foto">
+                                                                    <div style="width:80%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player11}}</span>
+                                                                    </div>
+
+                                                                
+                                                            </div>
+                                                            <div class="col ">
+                                                                    <img style="width: 80%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto2"  alt="Foto">
+                                                                    <div style="width:70%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player12}}</span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto7"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player11}}</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto8"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player12}} </span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+
+                                            <!-- <h4 class="text-warning">Pertandingan 2</h4>
+                                            <div class="container-fluid mb-4" >
+                                                <div class="row" style="left:2%;">
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto3"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player21}} 1231 gfdgfdg</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto4"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player21}} ggfdgfd ggfdgfd</span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                    </div>
+                                                    <div class="col-5">
+                                                            <div class="row " style=" width:120%;">
+                                                                <div class="col ">
+                                                                        <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto9"  alt="Foto">
+                                                                        <div style="width:100%" class="text-wrap">
+                                                                                <span style="font-size:70%; ">{{x.tim2player21}}</span>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col text-wrap">
+                                                                        <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto10"  alt="Foto">
+                                                                        <div style="width:100%" class="text-wrap">
+                                                                                <span style="font-size:70%; ">{{x.tim2player21}}</span>
+                                                                        </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                 </div>
                                             </div>
-                        
-                                            <h2>Pertandingan 3</h2>
-                                            <div class="row align-items-center mb-5">
-                                                <div class="col-5 ">
-                                                    <div class="row col-12  mx-auto">
-                                                        <div class="col-6 text-center">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto5"  alt="Cinque Terre">
-                                                            <span >{{x.tim1player31}}</span>
+
+
+                                            <h4 class="text-warning">Pertandingan 3</h4>
+                                            <div class="container-fluid mb-4" >
+                                                <div class="row" style="left:2%;">
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto5"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player31}}</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto6"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player31}}</span>
+                                                                    </div>
+                                                                
+                                                            </div>
                                                         </div>
-                                                        <div class="col-6">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto6"  alt="Cinque Terre">
-                                                            <span >{{x.tim1player32}}</span>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto11"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player31}}</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto12"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player32}} </span>
+                                                                    </div>
+                                                                
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2">
-                                                    <h1 class="text-danger">vs</h1> <br>
-                                                    <span v-if="x.hasil3">{{x.hasil3}}</span>
-                                                </div>
-                                                <div class="col-5 ">
-                                                    <div class="row col-12  mx-auto">
-                                                        <div class="col-6 text-center">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto11"  alt="Cinque Terre">
-                                                            <span >{{x.tim2player31}}</span>
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto12"  alt="Cinque Terre">
-                                                            <span >{{x.tim2player32}}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </div> -->
+
+                                               
+                                    
                                             <br>
-                                            <hr>                
+                                                      
                         
                         
                                         </div>
@@ -162,8 +295,11 @@
                         
                             </div>
                 
-                            <!-- hari baper kecil -->
+                    <!-- hari baper kecil -->
 
+
+
+                            
                     <!-- hari baper -->
                     <div class="container baper " v-if="show_event">
                         <br><br><br><br><br><br>
@@ -184,7 +320,7 @@
                                 <div class="col-12 text-primary"><h2>tanggal {{x.tanggal}}</h2></div><br>
                                 <div class="col-12"><h1>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h1></div>
                                 <div v-if="x.tim1player11"  class="row col-12 text-center mt-5 ">
-                                    <h2>Pertandingan 1</h2>
+                                    <h2 class="text-warning">Pertandingan 1</h2>
                                     <div class="row align-items-center mb-5">
                                         <div class="col-5 ">
                                             <div class="row col-12  ">
@@ -205,18 +341,18 @@
                                         <div class="col-5 ">
                                             <div class="row col-12  mx-auto">
                                                 <div class="col-6 text-center align-items-top ">
-                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto6"  alt="Cinque Terre">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto7"  alt="Cinque Terre">
                                                     <h4 >{{x.tim2player11}}</h4>
                                                 </div>
                                                 <div class="col-6 text-center align-items-top">
-                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto7"  alt="Cinque Terre">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto8"  alt="Cinque Terre">
                                                     <h4 >{{x.tim2player12}}</h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                 
-                                    <h2>Pertandingan 2</h2>
+                                    <h2 class="text-warning">Pertandingan 2</h2>
                                     <div class="row align-items-center mb-5">
                                         <div class="col-5 ">
                                             <div class="row col-12  mx-auto">
@@ -237,18 +373,18 @@
                                         <div class="col-5 ">
                                             <div class="row col-12  mx-auto">
                                                 <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto8"  alt="Cinque Terre">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto9"  alt="Cinque Terre">
                                                     <h4 >{{x.tim2player21}}</h4>
                                                 </div>
                                                 <div class="col-6">
-                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto9"  alt="Cinque Terre">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto10"  alt="Cinque Terre">
                                                     <h4 >{{x.tim2player22}}</h4>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                 
-                                    <h2>Pertandingan 3</h2>
+                                    <h2 class="text-warning">Pertandingan 3</h2>
                                     <div class="row align-items-center mb-5">
                                         <div class="col-5 ">
                                             <div class="row col-12  mx-auto">
@@ -293,7 +429,7 @@
                     <!-- hari baper -->
                     <!-- {{events}} -->
                     <div v-if="show_event" class="container " style="background-color: aliceblue;">
-                        <table class="table">
+                        <table class="table baper">
                             <thead>
                               <tr class="text-center">
                                 <th scope="col">#</th>
@@ -301,7 +437,35 @@
                                 <th scope="col">Hasil</th>
                               </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
+                              <tr v-if="HasilPertandingan.length > 0" v-for="x, index in HasilPertandingan">
+                                <td scope="row">{{index+1}}</td>
+                                <td>
+                                   <span class="text-primary">{{x.tanggal}}</span>  <br>
+                                    <b>{{x.tim1}}</b> <span class="text-danger">vs</span> <b>{{x.tim2}}</b>
+                                </td>
+                                <td>
+                                    {{x.tim1player11}} - {{x.tim1player12}} <span class="text-danger">vs</span> {{x.tim2player11}} - {{x.tim2player12}} <br> ( <b>{{x.hasil1}}</b> ) <hr> 
+                                    {{x.tim1player21}} - {{x.tim1player22}} <span class="text-danger">vs</span> {{x.tim2player21}} - {{x.tim2player22}} <br> ( <b>{{x.hasil2}}</b> ) <hr> 
+                                    {{x.tim1player31}} - {{x.tim1player32}} <span class="text-danger">vs</span> {{x.tim2player31}} - {{x.tim2player32}} <br> ( <b>{{x.hasil3}}</b> ) 
+                                </td>
+                                
+                              </tr>
+                              
+                            </tbody>
+                          </table>
+
+                          <!-- baper kecil -->
+
+                          <table class="table baperkecil">
+                            <thead>
+                              <tr class="text-center">
+                                <th scope="col">#</th>
+                                <th scope="col">Pertandingan</th>
+                                <th scope="col">Hasil</th>
+                              </tr>
+                            </thead>
+                            <tbody style="font-size:70%;">
                               <tr v-if="HasilPertandingan.length > 0" v-for="x, index in HasilPertandingan">
                                 <td scope="row">{{index+1}}</td>
                                 <td>
@@ -319,6 +483,393 @@
                             </tbody>
                           </table>
                     </div>
+
+
+                                                                  <!-- hari baper kecil -->
+                            <div class="container baperkecil " v-if="show_event">
+                                <br><br>
+                        
+                                <div class="row text-center mb-3  mx-auto">
+                            
+                                  
+
+                                    <div style="width:120%; margin-left:-20%;" v-if="HasilPertandingan.length > 0" class="mb-1 mx-auto " v-for="x, index in HasilPertandingan">
+                                        <div class="col-12 text-primary"><h5>tanggal {{x.tanggal}}</h5></div>
+                                        <div class="col-12"><h5>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h5></div>
+
+                                        <div style="width:110%; left:-4%;" v-if="x.tim1player11"  class="row col-12 text-center mx-auto  ">
+
+                                            <h4 class="text-warning  mb-3">Pertandingan 1</h4>
+                                            <div style="width:100%;"  class="row align-items-left mb-4 ">
+                                                <div class="col-5 ">
+                                                    <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                        <div class="col-6 text-center">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto1"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim1player11}}</span>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto2"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim1player12}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2 align-self-center text-center">
+                                                    <h1 class="text-danger ">vs</h1> <br>
+                                                    <span style="font-size:80%; top:-20%;"  v-if="x.hasil1">{{x.hasil1}}</span>
+                                                </div>
+                                                <div class="col-5 ">
+                                                    <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                        <div class="col-6 text-center">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto7"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim2player11}}</span>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto8"  alt="foto">
+                                                            <span style="font-size:80%; ">{{x.tim2player12}}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                <h4 class="text-warning  mb-3">Pertandingan 2</h4>
+                                                <div style="width:100%;"  class="row align-items-left mb-4 ">
+                                                    <div class="col-5 ">
+                                                        <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                            <div class="col-6 text-center">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto3"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim1player21}}</span>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto4"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim1player22}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                        <span style="font-size:80%;"  v-if="x.hasil1">{{x.hasil2}}</span>
+                                                    </div>
+                                                    <div class="col-5 ">
+                                                        <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                            <div class="col-6 text-center">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto9"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim2player21}}</span>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto10"  alt="foto">
+                                                                <span style="font-size:80%; ">{{x.tim2player22}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <h4 class="text-warning  mb-3">Pertandingan 3</h4>
+                                                <div style="width:100%;"  class="row align-items-left mb-4 ">
+                                                        <div class="col-5 ">
+                                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                                <div class="col-6 text-center">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto5"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim1player31}}</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto6"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim1player32}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2 align-self-center text-center">
+                                                            <h1 class="text-danger ">vs</h1> <br>
+                                                            <span style="font-size:80%;" v-if="x.hasil1">{{x.hasil3}}</span>
+                                                        </div>
+                                                        <div class="col-5 ">
+                                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
+                                                                <div class="col-6 text-center">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto11"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim2player31}}</span>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto12"  alt="foto">
+                                                                    <span style="font-size:80%; ">{{x.tim2player32}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                            <!-- <div class="container-fluid mb-4" >
+                                                <div class="row" style="left:2%;">
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                
+                                                                    <img style="width: 80%; margin-left:-10%; " class="rounded-circle"   :src="x.foto1"  alt="Foto">
+                                                                    <div style="width:80%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player11}}</span>
+                                                                    </div>
+
+                                                                
+                                                            </div>
+                                                            <div class="col ">
+                                                                    <img style="width: 80%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto2"  alt="Foto">
+                                                                    <div style="width:70%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player12}}</span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto7"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player11}}</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto8"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player12}} </span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+
+                                            <!-- <h4 class="text-warning">Pertandingan 2</h4>
+                                            <div class="container-fluid mb-4" >
+                                                <div class="row" style="left:2%;">
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto3"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player21}} 1231 gfdgfdg</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto4"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player21}} ggfdgfd ggfdgfd</span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                    </div>
+                                                    <div class="col-5">
+                                                            <div class="row " style=" width:120%;">
+                                                                <div class="col ">
+                                                                        <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto9"  alt="Foto">
+                                                                        <div style="width:100%" class="text-wrap">
+                                                                                <span style="font-size:70%; ">{{x.tim2player21}}</span>
+                                                                        </div>
+                                                                </div>
+                                                                <div class="col text-wrap">
+                                                                        <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto10"  alt="Foto">
+                                                                        <div style="width:100%" class="text-wrap">
+                                                                                <span style="font-size:70%; ">{{x.tim2player21}}</span>
+                                                                        </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                            </div>
+
+
+                                            <h4 class="text-warning">Pertandingan 3</h4>
+                                            <div class="container-fluid mb-4" >
+                                                <div class="row" style="left:2%;">
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto5"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player31}}</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto6"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim1player31}}</span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2 align-self-center text-center">
+                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                    </div>
+                                                    <div class="col-5">
+                                                        <div class="row " style=" width:120%;">
+                                                            <div class="col ">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto11"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player31}}</span>
+                                                                    </div>
+                                                            </div>
+                                                            <div class="col text-wrap">
+                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto12"  alt="Foto">
+                                                                    <div style="width:100%" class="text-wrap">
+                                                                            <span style="font-size:70%; ">{{x.tim2player32}} </span>
+                                                                    </div>
+                                                                
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+
+                                               
+                                    
+                                            <br>
+                                                      
+                        
+                        
+                                        </div>
+                                        <hr>
+                                    </div>
+                        
+                                </div>
+                        
+                            </div>
+                
+                    <!-- hari baper kecil -->
+
+
+
+                            
+                    <!-- hari baper -->
+                    <div class="container baper " v-if="show_event">
+                        <br><br>
+                
+                        <div class="row text-center mb-3">
+                            <!-- {{events}} -->
+
+                            <!-- <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN</h1></div> -->
+
+                            
+                                        
+
+                            <div v-if="HasilPertandingan.length > 0" class="mb-5" v-for="x, index in HasilPertandingan">
+                                <div class="col-12 text-primary"><h2>tanggal {{x.tanggal}}</h2></div><br>
+                                <div class="col-12"><h1>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h1></div>
+                                <div v-if="x.tim1player11"  class="row col-12 text-center mt-5 ">
+                                    <h2 class="text-warning">Pertandingan 1</h2>
+                                    <div class="row align-items-center mb-5">
+                                        <div class="col-5 ">
+                                            <div class="row col-12  ">
+                                                <div class="col-6 text-center align-items-top ">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto1"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim1player11}}</h4>
+                                                </div>
+                                                <div class="col-6 text-center align-items-top">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto2"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim1player12}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <h1 class="text-danger">vs</h1> <br>
+                                            <h1 v-if="x.hasil1">{{x.hasil1}}</h1>
+                                        </div>
+                                        <div class="col-5 ">
+                                            <div class="row col-12  mx-auto">
+                                                <div class="col-6 text-center align-items-top ">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto7"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim2player11}}</h4>
+                                                </div>
+                                                <div class="col-6 text-center align-items-top">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto8"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim2player12}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <h2 class="text-warning">Pertandingan 2</h2>
+                                    <div class="row align-items-center mb-5">
+                                        <div class="col-5 ">
+                                            <div class="row col-12  mx-auto">
+                                                <div class="col-6 text-center">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto3"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim1player21}}</h4>
+                                                </div>
+                                                <div class="col-6">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto4"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim1player22}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <h1 class="text-danger">vs</h1> <br>
+                                            <h1 v-if="x.hasil2">{{x.hasil2}}</h1>
+                                        </div>
+                                        <div class="col-5 ">
+                                            <div class="row col-12  mx-auto">
+                                                <div class="col-6 text-center">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto9"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim2player21}}</h4>
+                                                </div>
+                                                <div class="col-6">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto10"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim2player22}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <h2 class="text-warning">Pertandingan 3</h2>
+                                    <div class="row align-items-center mb-5">
+                                        <div class="col-5 ">
+                                            <div class="row col-12  mx-auto">
+                                                <div class="col-6 text-center">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto5"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim1player31}}</h4>
+                                                </div>
+                                                <div class="col-6">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto6"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim1player32}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <h1 class="text-danger">vs</h1> <br>
+                                            <h1 v-if="x.hasil3">{{x.hasil3}}</h1>
+                                        </div>
+                                        <div class="col-5 ">
+                                            <div class="row col-12  mx-auto">
+                                                <div class="col-6 text-center">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto11"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim2player31}}</h4>
+                                                </div>
+                                                <div class="col-6">
+                                                    <img class="rounded-circle mb-3"  style="width: 100%;" :src="x.foto12"  alt="Cinque Terre">
+                                                    <h4 >{{x.tim2player32}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <hr>                
+                
+                
+                                </div>
+                            </div>
+                
+                        </div>
+                
+                    </div>
+        
+                    <!-- hari baper -->
 
 
 
@@ -414,7 +965,7 @@
                     <div class="column1" @click="klikPlayer(x)">
                     <div class="card1 row">
                         <div class="col-md-6 col-xs-12">
-                            <img class="gambar-profil mx-auto"  :src="selectedPlayer[1].foto" alt="">
+                            <img class="gambar-profil mx-auto"  :src="selectedPlayer[1].foto_profil" alt="">
                         </div>
                         <div class="col-md-6 col-xs-12">
                             <div class="dataprofil">
@@ -631,7 +1182,7 @@
     <div class="container text-center mt-2">
 
         <h2>  {{players[current].player}}  </h2>
-        <img style="width: 80%;" class="mx-auto " v-if="players.length > 0" :src="players[current].foto" alt="">
+        <img style="width: 80%;" class="mx-auto " v-if="players.length > 0" :src="players[current].foto_profil" alt="">
     </div>
 </div>
 
