@@ -129,7 +129,7 @@ var app = new Vue({
         this.section = true;
         this.show_single_player = true;
         // this.selectedPlayer = x;
-        console.log(x);
+//         console.log(x);
         this.ambil_data_player(x);
 
       },
