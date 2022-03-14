@@ -301,9 +301,14 @@
 
                             
                     <!-- hari baper -->
+
+               
+
                     <div class="container baper " v-if="show_event">
                         <br><br><br><br><br><br>
                 
+
+         
                         <div class="row text-center mb-3">
                             <!-- {{events}} -->
 
@@ -428,7 +433,60 @@
         
                     <!-- hari baper -->
                     <!-- {{events}} -->
+
+                    
+
                     <div v-if="show_event" class="container " style="background-color: aliceblue;">
+                        <div class="klasemen mb-3" >
+                            <h1 style="color:black;" class="text-center">Klasemen Turnamen</h1>
+                            <!-- <span style="color:black;" class="text-center">{{groups1}}</span> -->
+                            <div style="color:black;" v-for="x in groups1">
+                                <h3 class="text-center mt-3">
+                                    GRUP {{x[0].grup}} 
+                                </h3>
+                                <table class="table mb-2" style="font-size:85%;">
+                                    <thead>
+                                      <tr class="text-center">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nama Tim</th>
+                                        <th scope="col">Jml Match</th>
+                                        <th scope="col">Poin</th>
+                                        <th scope="col">Game</th>
+                                        <th scope="col">Selisih Game</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody >
+                                      <tr  v-for="xx, index in x">
+                                        <td scope="row">{{index+1}}</td>
+                                        <td>
+                                            {{xx.namaTim}}
+                                        </td>
+                                        <td>
+                                            {{xx.JumlahMatch}}
+                                        </td>
+                                        <td>
+                                            {{xx.poin}}
+                                        </td>
+                                        <td>
+                                            {{xx.games}}
+                                        </td>
+                                        <td>
+                                            {{xx.selisihGames}}
+                                        </td>
+                                        
+                                      </tr>
+                                      
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+
+                        </div>    
+
+
+
+                <h1 style="color:black;" class="text-center mt-5">Hasil Pertandingan</h1>
                         <table class="table baper">
                             <thead>
                               <tr class="text-center">

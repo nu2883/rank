@@ -28,6 +28,7 @@ var app = new Vue({
     current: 0,
     width: 800,
     timer: 0,
+    grups: [],
 
 
 
@@ -87,6 +88,22 @@ var app = new Vue({
   
       return this.data_point.sort(compare1);
     },
+
+    groups1(){
+  if(this.grups.length > 0){
+    const result = {};
+
+    for(const {grup, namaTim, scorePlus, scoreMin, poin, games, selisihGames, JumlahMatch} of this.grups) {
+      if(!result[grup]) result[grup] = [];
+      result[grup].push({ grup, namaTim, scorePlus, scoreMin, poin, games, selisihGames, JumlahMatch });
+          }
+          return result;
+        }
+    },
+    
+
+
+
 
 
 
@@ -258,8 +275,19 @@ var app = new Vue({
 
   created() {
     // play slide show
-    
-    this.mulai ()
+    // this.mulai ()
+
+    // ambil data grup
+    this.grups = [];
+
+    var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=grup";
+
+    $.getJSON(url, function (json) {
+    // console.log(json.data);
+    // console.log(json.data.records)
+    app.grups = json.data;
+    });    
+
 
     // ambil data event
     this.event = [];
@@ -271,6 +299,8 @@ var app = new Vue({
     // console.log(json.data.records)
     app.event = json.data;
     });
+
+
     // ambil data rangking
     this.rankings = [];
 
