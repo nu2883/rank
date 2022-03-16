@@ -439,20 +439,23 @@
                     <div v-if="show_event" class="container " style="background-color: aliceblue;">
                         <div class="klasemen mb-3" >
                             <h1 style="color:black;" class="text-center">Klasemen Turnamen</h1>
-                            <!-- <span style="color:black;" class="text-center">{{groups1}}</span> -->
+                            <!-- <span style="color:black;" class="text-center">{{groups1}}</span>
+                            <br><br>
+                            <span style="color:black;" class="text-center">{{grups}}</span> -->
+                            
                             <div style="color:black;" v-for="x in groups1">
                                 <h3 class="text-center mt-3">
                                     GRUP {{x[0].grup}} 
                                 </h3>
-                                <table class="table mb-2" style="font-size:85%;">
+                                <table class="table mb-2" style="font-size:75%;">
                                     <thead>
-                                      <tr class="text-center">
-                                        <th scope="col">#</th>
-                                        <th scope="col">Nama Tim</th>
-                                        <th scope="col">Jml Match</th>
-                                        <th scope="col">Poin</th>
-                                        <th scope="col">Game</th>
-                                        <th scope="col">Selisih Game</th>
+                                      <tr class="text-center" style="background-color:aquamarine;">
+                                        <th class="align-middle" scope="col">#</th>
+                                        <th class="align-middle" scope="col">Nama Tim</th>
+                                        <th class="align-middle" scope="col">Jml Match</th>
+                                        <th class="align-middle" scope="col">Poin</th>
+                                        <th class="align-middle" scope="col">Game</th>
+                                        <th class="align-middle" scope="col">Selisih Game</th>
                                       </tr>
                                     </thead>
                                     <tbody >
@@ -487,7 +490,7 @@
 
 
                 <h1 style="color:black;" class="text-center mt-5">Hasil Pertandingan</h1>
-                        <table class="table baper">
+                        <table class="table baper table-striped">
                             <thead>
                               <tr class="text-center">
                                 <th scope="col">#</th>
@@ -507,7 +510,7 @@
                                     {{x.tim1player21}} - {{x.tim1player22}} <span class="text-danger">vs</span> {{x.tim2player21}} - {{x.tim2player22}} <br> ( <b>{{x.hasil2}}</b> ) <hr> 
                                     {{x.tim1player31}} - {{x.tim1player32}} <span class="text-danger">vs</span> {{x.tim2player31}} - {{x.tim2player32}} <br> ( <b>{{x.hasil3}}</b> ) 
                                 </td>
-                                
+                                <hr>
                               </tr>
                               
                             </tbody>

@@ -280,7 +280,7 @@ var app = new Vue({
     // ambil data grup
     this.grups = [];
 
-    var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=grup";
+    var url ="https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=Qgrup";
 
     $.getJSON(url, function (json) {
     // console.log(json.data);
