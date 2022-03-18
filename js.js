@@ -29,6 +29,8 @@ var app = new Vue({
     width: 800,
     timer: 0,
     grups: [],
+    dataModal:null,
+    
 
 
 

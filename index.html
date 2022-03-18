@@ -66,9 +66,10 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-2 align-self-center text-center">
+                                                <div class="col-2 align-self-center text-center ">
                                                     <h1 class="text-danger ">vs</h1> <br>
                                                     <span style="font-size:80%; top:-20%;"  v-if="x.hasil1">{{x.hasil1}}</span>
+                                                    
                                                 </div>
                                                 <div class="col-5 ">
                                                     <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
@@ -555,6 +556,7 @@
                                   
 
                                     <div style="width:120%; margin-left:-20%;" v-if="HasilPertandingan.length > 0" class="mb-1 mx-auto " v-for="x, index in HasilPertandingan">
+                                        
                                         <div class="col-12 text-primary"><h5>tanggal {{x.tanggal}}</h5></div>
                                         <div class="col-12"><h5>{{x.tim1}} <span class="text-danger">vs</span> {{x.tim2}}</h5></div>
 
@@ -575,8 +577,34 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-2 align-self-center text-center">
-                                                    <h1 class="text-danger ">vs</h1> <br>
-                                                    <span style="font-size:80%; top:-20%;"  v-if="x.hasil1">{{x.hasil1}}</span>
+                                                    <h1 class="text-danger ">vs</h1>
+                                                    
+                                                    
+                                                        <span  style="font-size:80%; top:-20%;"  v-if="x.hasil1">{{x.hasil1}}</span>
+                                                        <br>
+                                                        <svg v-if="x.fotoA" @click="dataModal = x"  data-bs-toggle="modal" data-bs-target="#exampleModal1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                                                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                                        </svg>
+                                                    
+
+                                                    <!-- Modal 1 -->
+                                                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img class="img-fluid" v-if="dataModal"   :src="dataModal.fotoA"  alt="foto">
+                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
+                                                        </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- Modal 1 -->
+
                                                 </div>
                                                 <div class="col-5 ">
                                                     <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
@@ -607,8 +635,32 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-2 align-self-center text-center">
-                                                        <h1 class="text-danger ">vs</h1> <br>
+                                                        <h1 class="text-danger ">vs</h1>
                                                         <span style="font-size:80%;"  v-if="x.hasil1">{{x.hasil2}}</span>
+                                                        <br>
+                                                        <svg v-if="x.fotoB" @click="dataModal = x"  data-bs-toggle="modal" data-bs-target="#exampleModal2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                                                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                                        </svg>
+
+                                                        
+                                                    <!-- Modal 2 -->
+                                                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img class="img-fluid" v-if="dataModal"   :src="dataModal.fotoB"  alt="foto">
+                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
+                                                        </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- Modal 2 -->
+
                                                     </div>
                                                     <div class="col-5 ">
                                                         <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
@@ -639,8 +691,31 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-2 align-self-center text-center">
-                                                            <h1 class="text-danger ">vs</h1> <br>
+                                                            <h1 class="text-danger ">vs</h1>
                                                             <span style="font-size:80%;" v-if="x.hasil1">{{x.hasil3}}</span>
+<br>
+                                                        <svg v-if="x.fotoC" @click="dataModal = x"  data-bs-toggle="modal" data-bs-target="#exampleModal3" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                                                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                                        </svg>
+
+                                                    <!-- Modal 3 -->
+                                                    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img class="img-fluid" v-if="dataModal"   :src="dataModal.fotoC"  alt="foto">
+                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
+                                                        </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- Modal 3 -->
+
                                                         </div>
                                                         <div class="col-5 ">
                                                             <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
@@ -656,138 +731,7 @@
                                                         </div>
                                                     </div>
 
-                                            <!-- <div class="container-fluid mb-4" >
-                                                <div class="row" style="left:2%;">
-                                                    <div class="col-5">
-                                                        <div class="row " style=" width:120%;">
-                                                            <div class="col ">
-                                                                
-                                                                    <img style="width: 80%; margin-left:-10%; " class="rounded-circle"   :src="x.foto1"  alt="Foto">
-                                                                    <div style="width:80%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim1player11}}</span>
-                                                                    </div>
-
-                                                                
-                                                            </div>
-                                                            <div class="col ">
-                                                                    <img style="width: 80%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto2"  alt="Foto">
-                                                                    <div style="width:70%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim1player12}}</span>
-                                                                    </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 align-self-center text-center">
-                                                        <h1 class="text-danger ">vs</h1> <br>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <div class="row " style=" width:120%;">
-                                                            <div class="col ">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto7"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim2player11}}</span>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="col text-wrap">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto8"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim2player12}} </span>
-                                                                    </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
-
-
-                                            <!-- <h4 class="text-warning">Pertandingan 2</h4>
-                                            <div class="container-fluid mb-4" >
-                                                <div class="row" style="left:2%;">
-                                                    <div class="col-5">
-                                                        <div class="row " style=" width:120%;">
-                                                            <div class="col ">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto3"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim1player21}} 1231 gfdgfdg</span>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="col text-wrap">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto4"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim1player21}} ggfdgfd ggfdgfd</span>
-                                                                    </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 align-self-center text-center">
-                                                        <h1 class="text-danger ">vs</h1> <br>
-                                                    </div>
-                                                    <div class="col-5">
-                                                            <div class="row " style=" width:120%;">
-                                                                <div class="col ">
-                                                                        <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto9"  alt="Foto">
-                                                                        <div style="width:100%" class="text-wrap">
-                                                                                <span style="font-size:70%; ">{{x.tim2player21}}</span>
-                                                                        </div>
-                                                                </div>
-                                                                <div class="col text-wrap">
-                                                                        <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto10"  alt="Foto">
-                                                                        <div style="width:100%" class="text-wrap">
-                                                                                <span style="font-size:70%; ">{{x.tim2player21}}</span>
-                                                                        </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                            </div>
-
-
-                                            <h4 class="text-warning">Pertandingan 3</h4>
-                                            <div class="container-fluid mb-4" >
-                                                <div class="row" style="left:2%;">
-                                                    <div class="col-5">
-                                                        <div class="row " style=" width:120%;">
-                                                            <div class="col ">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto5"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim1player31}}</span>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="col text-wrap">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto6"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim1player31}}</span>
-                                                                    </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-2 align-self-center text-center">
-                                                        <h1 class="text-danger ">vs</h1> <br>
-                                                    </div>
-                                                    <div class="col-5">
-                                                        <div class="row " style=" width:120%;">
-                                                            <div class="col ">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle"   :src="x.foto11"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim2player31}}</span>
-                                                                    </div>
-                                                            </div>
-                                                            <div class="col text-wrap">
-                                                                    <img style="width: 120%; margin-left:-10%; " class="rounded-circle px-auto"   :src="x.foto12"  alt="Foto">
-                                                                    <div style="width:100%" class="text-wrap">
-                                                                            <span style="font-size:70%; ">{{x.tim2player32}} </span>
-                                                                    </div>
-                                                                
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div> -->
+                                         
 
                                                
                                     
@@ -841,6 +785,28 @@
                                         <div class="col-2">
                                             <h1 class="text-danger">vs</h1> <br>
                                             <h1 v-if="x.hasil1">{{x.hasil1}}</h1>
+                                                        <svg v-if="x.fotoA" @click="dataModal = x"  data-bs-toggle="modal" data-bs-target="#exampleModal11" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                                                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                                        </svg>
+                                                    
+
+                                                    <!-- Modal 1 -->
+                                                    <div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header text-danger">
+                                                            <button type="button" class="btn-close mt-5 " data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img class="img-fluid" v-if="dataModal"   :src="dataModal.fotoA"  alt="foto">
+                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
+                                                        </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- Modal 1 -->
                                         </div>
                                         <div class="col-5 ">
                                             <div class="row col-12  mx-auto">
@@ -873,6 +839,28 @@
                                         <div class="col-2">
                                             <h1 class="text-danger">vs</h1> <br>
                                             <h1 v-if="x.hasil2">{{x.hasil2}}</h1>
+                                                                <svg v-if="x.fotoB" @click="dataModal = x"  data-bs-toggle="modal" data-bs-target="#exampleModal12" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                                                </svg>
+                                                    
+
+                                                    <!-- Modal 1 -->
+                                                    <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header text-danger">
+                                                            <button type="button" class="btn-close mt-5 " data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img class="img-fluid" v-if="dataModal"   :src="dataModal.fotoB"  alt="foto">
+                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
+                                                        </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- Modal 1 -->
                                         </div>
                                         <div class="col-5 ">
                                             <div class="row col-12  mx-auto">
@@ -905,6 +893,28 @@
                                         <div class="col-2">
                                             <h1 class="text-danger">vs</h1> <br>
                                             <h1 v-if="x.hasil3">{{x.hasil3}}</h1>
+                                                        <svg v-if="x.fotoC" @click="dataModal = x"  data-bs-toggle="modal" data-bs-target="#exampleModal13" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+                                                        <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+                                                        <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                                                        </svg>
+                                                    
+
+                                                    <!-- Modal 1 -->
+                                                    <div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header text-danger">
+                                                            <button type="button" class="btn-close mt-5 " data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <img class="img-fluid" v-if="dataModal"   :src="dataModal.fotoC"  alt="foto">
+                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
+                                                        </div>
+
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    <!-- Modal 1 -->
                                         </div>
                                         <div class="col-5 ">
                                             <div class="row col-12  mx-auto">
@@ -1263,6 +1273,9 @@
 
 
 </script>
+
+ <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

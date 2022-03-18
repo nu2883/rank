@@ -451,7 +451,7 @@ table td {
   border-radius: 50%;
 }
 
-button {
+/* button {
   cursor: pointer;
   position: relative;
   padding: 2.5rem 7.5rem;
@@ -519,7 +519,7 @@ button::after {
     #ffffff 80%,
     rgba(255, 255, 255, 0) 100%
   );
-}
+} */
 
 .loading {
   width: 100%;
