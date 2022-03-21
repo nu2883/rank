@@ -29,7 +29,8 @@ var app = new Vue({
     width: 800,
     timer: 0,
     grups: [],
-    dataModal:null,
+    dataModal: null,
+    show_bola:true,
     
 
 
@@ -269,6 +270,18 @@ var app = new Vue({
         app.mulai();
       }, 600000);
     },
+    bola() {
+      // app.showOff();
+      // alert('dfsafd')
+      setTimeout (function() {
+        app.show_bola = false;
+        this.main = true;
+        this.header = true;
+        this.show_event = true;
+        // alert('jlkjfkldjsfd')
+      }, 4900);
+
+    },
 
 
 
@@ -277,7 +290,11 @@ var app = new Vue({
 
   created() {
     // play slide show
-    // this.mulai ()
+    // this.mulai()
+
+
+    // animasi bola
+    this.bola ()
 
     // ambil data grup
     this.grups = [];
