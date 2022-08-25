@@ -34,6 +34,11 @@ var app = new Vue({
     baper2021: false,
     show_event2022: true,
     turnamen2022: [],
+    jadwal: true,
+    turnamenNews: true,
+    klasemenTurnamen: true,
+    pesertaTurnamen: true,
+
 
 
 
@@ -116,6 +121,32 @@ var app = new Vue({
 
   },
   methods: {
+    showOffTurnamen() {
+      this.jadwal = false;
+      this.turnamenNews = false;
+      this.klasemenTurnamen = false;
+      this.pesertaTurnamen = false;
+
+    },
+    showOnTurnamen() {
+      this.jadwal = true;
+      this.turnamenNews = true;
+      this.klasemenTurnamen = true;
+      this.pesertaTurnamen = true;
+
+    },
+    klikJadwal() {
+      this.showOffTurnamen();
+      this.jadwal = true;
+    },
+    klikKlasemen() {
+      this.showOffTurnamen();
+      this.klasemenTurnamen = true;
+    },
+    klikPeserta() {
+      this.showOffTurnamen();
+      this.pesertaTurnamen = true;
+    },
     showOff() {
       this.header = false;
       // this.main = false;
