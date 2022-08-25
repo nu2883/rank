@@ -1054,6 +1054,7 @@
 
                 </div>
 
+
                 <!-- Start Turnamen 2022                                         -->
                 <div class="container text-center" v-if="show_event2022">
                     <br>
@@ -1065,40 +1066,51 @@
                     <div v-if="turnamen2022.length > 2">
 
 
-                        <img style="width:100%;" class="mt-3 mb-3" :src="turnamen2022[0].linkFoto" alt="">
+                        <img @click="showOnTurnamen" style="width:100%;" class="mt-3 mb-3" :src="turnamen2022[0].linkFoto" alt="">
 
                         <div class="d-flex justify-content-evenly stickyTurnamen mb-5">
 
-                            <button style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Klasemen </button>
-                            <button style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Jadwal </button>
-                            <button style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Peserta</button>
+                            <button @click="klikKlasemen" style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Klasemen </button>
+                            <button @click="klikJadwal" style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Jadwal </button>
+                            <button @click="klikPeserta" style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Peserta</button>
                         </div>
 
 
+                        <div v-if="turnamenNews">
+                            <b>
+                                <i>
+                                    <h2>{{turnamen2022[3].namaFoto}}</h2>
+                                </i>
+                            </b>
+                            <img style="width:80%;" class="mt-3 mb-3" :src="turnamen2022[3].linkFoto" alt="">
+                        </div>
 
-                        <b>
-
-                            <!-- {{turnamen2022}} -->
-                            <i>
-                                <h2>{{turnamen2022[3].namaFoto}}</h2>
-                            </i>
-                        </b>
-                        <img style="width:80%;" class="mt-3 mb-3" :src="turnamen2022[3].linkFoto" alt="">
-
-
-
-                        <b>
-                            <h3>JADWAL PERTANDINGAN TURNAMEN TENIS LAPANGAN</h3>
-                            <i>
-                                <h2>{{turnamen2022[0].namaTurnamen}}</h2>
-                            </i>
-                        </b>
-
-                        <img style="width:100%;" :src="turnamen2022[1].linkFoto" alt="" class="mt-3 mb-3">
-                        <img style="width:100%;" :src="turnamen2022[2].linkFoto" alt="" class="mt-3 mb-3">
+                        <div v-if="klasemenTurnamen">
+                            <h1>Klasemen</h1>
+                        </div>
 
 
-                        <br><br><br><br><br>
+                        <div v-if="jadwal">
+                            <b>
+                                <h3>JADWAL PERTANDINGAN TURNAMEN TENIS LAPANGAN</h3>
+                                <i>
+                                    <h2>{{turnamen2022[0].namaTurnamen}}</h2>
+                                </i>
+                            </b>
+                            <img style="width:100%;" :src="turnamen2022[1].linkFoto" alt="" class="mt-3 mb-3">
+                            <img style="width:100%;" :src="turnamen2022[2].linkFoto" alt="" class="mt-3 mb-3">
+                        </div>
+
+                        <div v-if="pesertaTurnamen">
+                            <h1>Peserta Turnamen</h1>
+                        </div>
+
+
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                 </div>
                 <!-- End Turnamen 2022                                         -->
