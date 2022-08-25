@@ -451,7 +451,7 @@ table td {
   border-radius: 50%;
 }
 
-button {
+/* button {
   cursor: pointer;
   position: relative;
   padding: 2.5rem 7.5rem;
@@ -519,7 +519,7 @@ button::after {
     #ffffff 80%,
     rgba(255, 255, 255, 0) 100%
   );
-}
+} */
 
 .loading {
   width: 100%;
@@ -531,4 +531,66 @@ button::after {
   background-color: black;
   opacity: 1;
   position: absolute;
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.rotating {
+  -webkit-animation: rotating 3s linear infinite;
+  -moz-animation: rotating 3s linear infinite;
+  -ms-animation: rotating 3s linear infinite;
+  -o-animation: rotating 3s linear infinite;
+  animation: rotating 3s linear infinite;
+}
+
+.button-image {
+  animation: updown 4s ease infinite;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  30% {
+    transform: translateY(40%);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+div.stickyTurnamen {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
+  background-color: transparent;
+  font-size: 20px;
+  color: white;
 }
