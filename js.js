@@ -38,6 +38,7 @@ var app = new Vue({
     turnamenNews: true,
     klasemenTurnamen: true,
     pesertaTurnamen: true,
+    pertandingan2022: [],
 
 
 
@@ -333,7 +334,7 @@ var app = new Vue({
     this.bola()
 
     // ambil data turnamen
-    this.grups = [];
+    this.turnamen2022 = [];
 
     var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=Qturnamen2022";
 
@@ -342,6 +343,17 @@ var app = new Vue({
       // console.log(json.data.records)
       app.turnamen2022 = json.data;
     });
+
+    // ambil data pertandingan
+    // this.pertandingan2022 = [];
+
+    // var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=dataPertandingan";
+
+    // $.getJSON(url, function (json) {
+    //   // console.log(json.data);
+    //   // console.log(json.data.records)
+    //   app.pertandingan2022 = json.data;
+    // });
 
     // ambil data grup
     this.grups = [];
