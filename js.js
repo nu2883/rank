@@ -345,15 +345,15 @@ var app = new Vue({
     });
 
     // ambil data pertandingan
-    // this.pertandingan2022 = [];
+    this.pertandingan2022 = [];
 
-    // var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=dataPertandingan";
+    var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=dataPertandingan";
 
-    // $.getJSON(url, function (json) {
-    //   // console.log(json.data);
-    //   // console.log(json.data.records)
-    //   app.pertandingan2022 = json.data;
-    // });
+    $.getJSON(url, function (json) {
+      // console.log(json.data);
+      // console.log(json.data.records)
+      app.pertandingan2022 = json.data;
+    });
 
     // ambil data grup
     this.grups = [];
