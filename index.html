@@ -316,7 +316,38 @@
 
         <div class=" container text-center" v-if="grup.length > 0">
             <h1 style="color:rgba(216, 36, 12, 0.911);">KLASEMEN GRUP MERAH</h1>
-            <table style="background-color:#FFC0CB; width:100%; font-size:8px;" class="table table-hover table-responsive">
+
+            <div class="d-none d-sm-block">
+                <table style="background-color:#FFC0CB; width:100%; " class="table table-hover table-responsive">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NAMA TIM</th>
+                            <th scope="col">MAIN</th>
+                            <th scope="col">POINT</th>
+                            <th scope="col">SCORE +</th>
+                            <th scope="col">SCORE -</th>
+                            <th scope="col">SELISIH</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item, index in Merah">
+                            <th scope="row">{{index+1}}</th>
+                            <b>
+                                <td>{{item.namaTim}}</td>
+                            </b>
+                            <td>{{item.JumlahMatch}}</td>
+                            <td>{{item.poin}}</td>
+                            <td>{{item.scorePlus}}</td>
+                            <td>{{item.scoreMin}}</td>
+                            <td>{{item.selisihGames}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <table style="background-color:#FFC0CB; width:100%; font-size:8px;" class="d-block d-sm-none table table-hover table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -347,7 +378,36 @@
             <br>
 
             <h1 style="color:white;">KLASEMEN GRUP PUTIH</h1>
-            <table style="background-color:white; font-size:8px;" class="table table-hover">
+            <div class="d-none d-sm-block">
+                <table style="background-color:white;" class=" table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">NAMA TIM</th>
+                            <th scope="col">MAIN</th>
+                            <th scope="col">POINT</th>
+                            <th scope="col">SCORE +</th>
+                            <th scope="col">SCORE -</th>
+                            <th scope="col">SELISIH</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item, index in Putih">
+                            <th scope="row">{{index+1}}</th>
+                            <b>
+                                <td>{{item.namaTim}}</td>
+                            </b>
+                            <td>{{item.JumlahMatch}}</td>
+                            <td>{{item.poin}}</td>
+                            <td>{{item.scorePlus}}</td>
+                            <td>{{item.scoreMin}}</td>
+                            <td>{{item.selisihGames}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <table style="background-color:white; font-size:8px;" class="table table-hover d-block d-sm-none">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -373,6 +433,7 @@
                     </tr>
                 </tbody>
             </table>
+
         </div>
 
 
