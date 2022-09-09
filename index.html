@@ -159,32 +159,32 @@
         </div>
 
         <!-- only on xs -->
-        <div v-for="item in dataPertandingan" class="d-block d-sm-none container text-center mb-3" style="color:white;">
+        <div v-for="item in dataPertandingan" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
             <h1>{{item.tanggal}}</h1>
 
-            <div class="container">
+            <div class="">
                 <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
-                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-center ">
+                    <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
                         <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
                             <div class="d-flex">
                                 <h5 style="font-weight:800; color:#800001;" class="">{{item.point1}}</h5>
                             </div>
                         </div>
                         <div class="mx-1 mb-2 ">
-                            <span style="font-weight:400; color:white; font-size:15px;" class="">{{item.tim1}}</span>
+                            <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim1}}</span>
                         </div>
                     </div>
                     <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
                         <span class="text-center " style="font-weight:800;">vs</span>
                     </div>
-                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-center ">
+                    <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
                         <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
                             <div class="d-flex">
                                 <h5 style="font-weight:800; color:#800001;" class="">{{item.point2}}</h5>
                             </div>
                         </div>
                         <div class="mx-1 mb-2 ">
-                            <span style="font-weight:400; color:white; font-size:15px;" class="">{{item.tim2}}</span>
+                            <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim2}}</span>
                         </div>
                     </div>
 
