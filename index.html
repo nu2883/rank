@@ -19,12 +19,14 @@
 </head>
 
 <body class="p-0 m-0" style="background-color:black;" ;>
-    <div id="app" class="p-0 m-0" style="">
+    <div id="app" class="p-0 m-0">
         <img v-if="turnamen2022.length > 0" style="width:100%; margin-top:0;" class="mt-3 mb-3" :src="turnamen2022[0].linkFoto" alt="">
         <!-- {{turnamen2022}} -->
 
+        <!-- {{Merah}} -->
+
         <!-- hide only on xs -->
-        <div v-for="item in dataPertandingan" class="d-none d-sm-block container text-center mb-5" style="color:white;">
+        <div v-for="item in Highligh" class="d-none d-sm-block container text-center mb-5" style="color:white;">
             <h1>{{item.tanggal}}</h1>
             <div class="container">
                 <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
@@ -183,7 +185,7 @@
                 </div>
             </div>
         </div>
-        <div v-for="item in dataPertandingan" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
+        <div v-for="item in Highligh" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
             <h1>{{item.tanggal}}</h1>
 
             <div class="">
@@ -312,6 +314,362 @@
         </div>
 
 
+        <div class=" container text-center" v-if="grup.length > 0">
+            <h1 style="color:rgba(216, 36, 12, 0.911);">KLASEMEN GRUP MERAH</h1>
+            <table style="background-color:#FFC0CB; width:100%;" class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">NAMA TIM</th>
+                        <th scope="col">MAIN</th>
+                        <th scope="col">POINT</th>
+                        <th scope="col">SCORE +</th>
+                        <th scope="col">SCORE -</th>
+                        <th scope="col">SELISIH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item, index in Merah">
+                        <th scope="row">{{index+1}}</th>
+                        <b>
+                            <td>{{item.namaTim}}</td>
+                        </b>
+                        <td>{{item.JumlahMatch}}</td>
+                        <td>{{item.poin}}</td>
+                        <td>{{item.scorePlus}}</td>
+                        <td>{{item.scoreMin}}</td>
+                        <td>{{item.selisihGames}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+            <br>
+
+            <h1 style="color:white;">KLASEMEN GRUP PUTIH</h1>
+            <table style="background-color:white;" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">NAMA TIM</th>
+                        <th scope="col">MAIN</th>
+                        <th scope="col">POINT</th>
+                        <th scope="col">SCORE +</th>
+                        <th scope="col">SCORE -</th>
+                        <th scope="col">SELISIH</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item, index in Putih">
+                        <th scope="row">{{index+1}}</th>
+                        <b>
+                            <td>{{item.namaTim}}</td>
+                        </b>
+                        <td>{{item.JumlahMatch}}</td>
+                        <td>{{item.poin}}</td>
+                        <td>{{item.scorePlus}}</td>
+                        <td>{{item.scoreMin}}</td>
+                        <td>{{item.selisihGames}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- tampil data history -->
+        <div class="text-center">
+            <button @click="historyPertandingan=!historyPertandingan" class="btn btn-primary ">Tampilkan History Pertandingan</button>
+        </div>
+        <div v-if="historyPertandingan">
+            <!-- hide only on xs -->
+            <div v-for="item in History" class="d-none d-sm-block container text-center mb-5" style="color:white;">
+                <h1>{{item.tanggal}}</h1>
+                <div class="container">
+                    <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
+                        <div class="col-5 d-flex  flex-wrap align-items-center justify-content-start ">
+                            <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:#800001;" class="display-5">{{item.point1}}</span>
+                                </div>
+                            </div>
+                            <div class="mx-1 mb-2 ">
+                                <span style="font-weight:400; color:white;" class="display-6">{{item.tim1}}</span>
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center display-5 mb-2">
+                            <span class="text-center " style="font-weight:800;">vs</span>
+                        </div>
+                        <div class="col-5 d-flex  flex-wrap align-items-center justify-content-end ">
+                            <div class="mx-1 mb-2 ">
+                                <span style="font-weight:400; color:white;" class="display-6">{{item.tim2}}</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:#800001;" class="display-5">{{item.point2}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                <span>{{item.tim1player11}}</span>
+                                <span>/</span>
+                                <span>{{item.tim1player12}}</span>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim11}}</span>
+                                </div>
+                            </div>
+                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim21}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                <span>{{item.tim2player11}}</span>
+                                <span>/</span>
+                                <span>{{item.tim2player12}}</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                <span>{{item.tim1player21}}</span>
+                                <span>/</span>
+                                <span>{{item.tim1player22}}</span>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim12}}</span>
+                                </div>
+                            </div>
+                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim22}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                <span>{{item.tim2player21}}</span>
+                                <span>/</span>
+                                <span>{{item.tim2player22}}</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                <span>{{item.tim1player31}}</span>
+                                <span>/</span>
+                                <span>{{item.tim1player32}}</span>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim13}}</span>
+                                </div>
+                            </div>
+                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim23}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                <span>{{item.tim2player31}}</span>
+                                <span>/</span>
+                                <span>{{item.tim2player32}}</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+            <!-- only on xs -->
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                Launch demo modal
+                            </button> -->
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <!-- <div class="modal-header d-flex justify-content-end">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button class="bg-danger btn-xs" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div> -->
+                        <div class="modal-body">
+                            <img style="width:100%;" :src="fotoPertandingan" alt="" class="img-fluid">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div v-for="item in History" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
+                <h1>{{item.tanggal}}</h1>
+
+                <div class="">
+                    <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
+                        <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
+                            <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                <div class="d-flex">
+                                    <h5 style="font-weight:800; color:#800001;" class="">{{item.point1}}</h5>
+                                </div>
+                            </div>
+                            <div class="mx-1 mb-2 ">
+                                <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim1}}</span>
+                            </div>
+                        </div>
+                        <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
+                            <span class="text-center " style="font-weight:800;">vs</span>
+                        </div>
+                        <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
+                            <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                <div class="d-flex">
+                                    <h5 style="font-weight:800; color:#800001;" class="">{{item.point2}}</h5>
+                                </div>
+                            </div>
+                            <div class="mx-1 mb-2 ">
+                                <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim2}}</span>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                        style="font-weight:800; background-color:white; border-radius:35px;">
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                <span>{{item.tim1player11}}</span>
+                                <span>/</span>
+                                <span>{{item.tim1player12}}</span>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                            <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:600; color:white;" class="">{{item.hasilTim11}}</span>
+                                </div>
+                            </div>
+                            <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
+                            <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="d-flex ">
+                                    <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim21}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                            <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                <span>{{item.tim2player11}}</span>
+                                <span>/</span>
+                                <span>{{item.tim2player12}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                        style="font-weight:800; background-color:white; border-radius:35px;">
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                <span>{{item.tim1player21}}</span>
+                                <span>/</span>
+                                <span>{{item.tim1player22}}</span>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                            <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:600; color:white;" class="">{{item.hasilTim12}}</span>
+                                </div>
+                            </div>
+                            <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
+                            <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="d-flex ">
+                                    <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim22}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                            <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                <span>{{item.tim2player21}}</span>
+                                <span>/</span>
+                                <span>{{item.tim2player22}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                        style="font-weight:800; background-color:white; border-radius:35px;">
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                            <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                <span>{{item.tim1player31}}</span>
+                                <span>/</span>
+                                <span>{{item.tim1player32}}</span>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                            <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="d-flex">
+                                    <span style="font-weight:600; color:white;" class="">{{item.hasilTim13}}</span>
+                                </div>
+                            </div>
+                            <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
+                            <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="d-flex ">
+                                    <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim23}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                            <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                <span>{{item.tim2player31}}</span>
+                                <span>/</span>
+                                <span>{{item.tim2player32}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
 
@@ -350,7 +708,32 @@
         data: {
             turnamen2022: ['a', 'b', 'c'],
             dataPertandingan: [],
-            fotoPertandingan: 'https://narmadi.com/id/wp-content/uploads/2020/06/gambar-mewarnai-pemandangan.webp',
+            fotoPertandingan: '',
+            grup: [],
+            historyPertandingan: false,
+
+
+        },
+        computed: {
+            Highligh: function () {
+                return this.dataPertandingan.filter((blog) => {
+                    return blog.status == '1'
+                });
+            },
+            Merah: function () {
+                return this.grup.filter((blog) => {
+                    return blog.grup == 'MERAH'
+                });
+            },
+            Putih: function () {
+                return this.grup.filter((blog) => {
+                    return blog.grup == 'PUTIH'
+                });
+            },
+            History() {
+                return this.dataPertandingan.reverse();
+            }
+
 
 
         },
@@ -379,10 +762,23 @@
 
 
             $.getJSON(url, function (json) {
-                // console.log(json.data);
-                // console.log(json.data.records)
                 app.dataPertandingan = json.data;
             });
+
+            // ambil data score
+            this.grup = [];
+
+            var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=QGrupMerahPutih";
+
+
+            $.getJSON(url, function (json) {
+                app.grup = json.data;
+            });
+
+
+
+
+
         }
     });
 </script>
