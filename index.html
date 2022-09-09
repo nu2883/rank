@@ -1,1610 +1,356 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TTC</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+    <title>Treasury Tennis Club</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 </head>
 
-<body oncontextmenu="return false">
-    <div id="app">
+<body class="p-0 m-0" style="background-color:black;" ;>
+    <div id="app" class="p-0 m-0">
+        <img v-if="turnamen2022.length > 0" style="width:100%; margin-top:0;" class="mt-3 mb-3" :src="turnamen2022[0].linkFoto" alt="">
+        <!-- {{turnamen2022}} -->
 
-
-
-
-        <transition name="slide-fade">
-
-            <div v-if="main">
-
-                <header v-if="header">
-                    <div class="logoCenter ">
-                        <a href="#" @click="showAll" class="logo align-items-center">
-                            <img class="img" src="https://gdurl.com/U_qr/" alt="logo">
-                            <span class="my-auto"> Treasury Tennis Club</span>
-                        </a>
-                    </div>
-                    <ul class="my-auto">
-                        <li>
-                            <a @click="klikRanking" href="#">Rankings</a>
-                        </li>
-                    </ul>
-                    <ul class="my-auto">
-                        <li>
-                            <a @click="klikPlayers" href="#">Players</a>
-                        </li>
-                    </ul>
-                    <ul class="my-auto">
-                        <li>
-                            <a @click="klikTurnamen" href="#">Turnament</a>
-                        </li>
-                    </ul>
-                    <i @click="mklikMenu" class="fas fa-bars"></i>
-                </header>
-
-                <div class="hariBaper" v-if="baper2021">
-
-                    <!-- hari baper kecil -->
-                    <div class="container baperkecil " v-if="show_event">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-
-                        <div class="row text-center mb-3  mx-auto">
-
-                            <div class="mb-3" style=" color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
-
-                                <img style="width: 120%; margin-left:-10%; " class="gambar" src="https://lh3.googleusercontent.com/pw/AM-JKLXPU-cGorfGzC9Sy2IJk1NOy3rU3Z3Jcb7sbNbAWNZyHEIgxEW2pmC4dJsG7rfSnrar-NIfJQcIAEOON7wDruhjx-POoBRwwPENQyHC8F7SUBPAOkf-D05qHxZJPjjVtA1I-Rbvdhxc4gLXV8nw8Ti02A=w1280-h426-no?authuser=0"
-                                    alt="">
-
+        <!-- hide only on xs -->
+        <div v-for="item in dataPertandingan" class="d-none d-sm-block container text-center mb-5" style="color:white;">
+            <h1>{{item.tanggal}}</h1>
+            <div class="container">
+                <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:red; border-radius:35px;">
+                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-start ">
+                        <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:red;" class="display-5">{{item.point1}}</span>
                             </div>
-
-                            <div style="width:120%; margin-left:-20%;" v-if="events.length > 0" class="mb-1 mx-auto " v-for="x, index in events">
-                                <div class="col-12 text-primary">
-                                    <h5>tanggal {{x.tanggal}}</h5>
-                                </div>
-                                <div class="col-12">
-                                    <h5>{{x.tim1}}
-                                        <span class="text-danger">vs</span> {{x.tim2}}</h5>
-                                </div>
-
-                                <div style="width:110%; left:-4%;" v-if="x.tim1player11" class="row col-12 text-center mx-auto  ">
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 1</h4>
-                                    <div style="width:100%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto1" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player11}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto2" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player12}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center ">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <br>
-                                            <span style="font-size:80%; top:-20%;" v-if="x.hasil1">{{x.hasil1}}</span>
-
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto7" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player11}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto8" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player12}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 2</h4>
-                                    <div style="width:100%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto3" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player21}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto4" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player22}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <br>
-                                            <span style="font-size:80%;" v-if="x.hasil1">{{x.hasil2}}</span>
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto9" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player21}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto10" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player22}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 3</h4>
-                                    <div style="width:100%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto5" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player31}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto6" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player32}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <br>
-                                            <span style="font-size:80%;" v-if="x.hasil1">{{x.hasil3}}</span>
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto11" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player31}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto12" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player32}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <br>
-
-
-
-                                </div>
-                                <hr>
-                            </div>
-
                         </div>
-
-                    </div>
-
-                    <!-- hari baper kecil -->
-
-
-
-
-                    <!-- hari baper -->
-
-
-
-                    <div class="container baper " v-if="show_event">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-
-
-
-                        <div class="row text-center mb-3">
-                            <!-- {{events}} -->
-
-                            <!-- <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN</h1></div> -->
-
-
-                            <div class="mb-4" style="margin-top: 30px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
-
-                                <img style="width: 120%; margin-left:-10%;" class="gambar" src="https://lh3.googleusercontent.com/pw/AM-JKLXPU-cGorfGzC9Sy2IJk1NOy3rU3Z3Jcb7sbNbAWNZyHEIgxEW2pmC4dJsG7rfSnrar-NIfJQcIAEOON7wDruhjx-POoBRwwPENQyHC8F7SUBPAOkf-D05qHxZJPjjVtA1I-Rbvdhxc4gLXV8nw8Ti02A=w1280-h426-no?authuser=0"
-                                    alt="">
-
-                            </div>
-
-                            <div v-if="events.length > 0" class="mb-5" v-for="x, index in events">
-                                <div class="col-12 text-primary">
-                                    <h2>tanggal {{x.tanggal}}</h2>
-                                </div>
-                                <br>
-                                <div class="col-12">
-                                    <h1>{{x.tim1}}
-                                        <span class="text-danger">vs</span> {{x.tim2}}</h1>
-                                </div>
-                                <div v-if="x.tim1player11" class="row col-12 text-center mt-5 ">
-                                    <h2 class="text-warning">Pertandingan 1</h2>
-                                    <div class="row align-items-center mb-5">
-                                        <div class="col-5 ">
-                                            <div class="row col-12  ">
-                                                <div class="col-6 text-center align-items-top ">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto1" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player11}}</h4>
-                                                </div>
-                                                <div class="col-6 text-center align-items-top">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto2" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player12}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <h1 class="text-danger">vs</h1>
-                                            <br>
-                                            <h1 v-if="x.hasil1">{{x.hasil1}}</h1>
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center align-items-top ">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto7" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player11}}</h4>
-                                                </div>
-                                                <div class="col-6 text-center align-items-top">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto8" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player12}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h2 class="text-warning">Pertandingan 2</h2>
-                                    <div class="row align-items-center mb-5">
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto3" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player21}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto4" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player22}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <h1 class="text-danger">vs</h1>
-                                            <br>
-                                            <h1 v-if="x.hasil2">{{x.hasil2}}</h1>
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto9" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player21}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto10" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player22}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h2 class="text-warning">Pertandingan 3</h2>
-                                    <div class="row align-items-center mb-5">
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto5" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player31}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto6" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player32}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <h1 class="text-danger">vs</h1>
-                                            <br>
-                                            <h1 v-if="x.hasil3">{{x.hasil3}}</h1>
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto11" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player31}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto12" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player32}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <hr>
-
-
-                                </div>
-                            </div>
-
+                        <div class="mx-1 mb-2 ">
+                            <span style="font-weight:400; color:white;" class="">{{item.tim1}}</span>
                         </div>
-
                     </div>
-
-                    <!-- hari baper -->
-                    <!-- {{events}} -->
-
-
-
-                    <div v-if="show_event" class="container " style="background-color: aliceblue;">
-                        <div class="klasemen mb-3">
-                            <h1 style="color:black;" class="text-center">Klasemen Turnamen</h1>
-                            <!-- <span style="color:black;" class="text-center">{{groups1}}</span>
-                                                <br><br>
-                                                <span style="color:black;" class="text-center">{{grups}}</span> -->
-
-                            <div style="color:black;" v-for="x in groups1">
-                                <h3 class="text-center mt-3">
-                                    GRUP {{x[0].grup}}
-                                </h3>
-                                <table class="table mb-5" style="font-size:75%;">
-                                    <thead>
-                                        <tr class="text-center" style="background-color:aquamarine;">
-                                            <th class="align-middle" scope="col">#</th>
-                                            <th class="align-middle" scope="col" style="width: 30%;">Nama Tim</th>
-                                            <th class="align-middle" scope="col">Jml Match</th>
-                                            <th class="align-middle" scope="col">Poin</th>
-                                            <th class="align-middle" scope="col">Game</th>
-                                            <th class="align-middle" scope="col">Selisih Game</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="xx, index in x">
-                                            <td scope="row">{{index+1}}</td>
-                                            <td>
-                                                {{xx.namaTim}}
-                                            </td>
-                                            <td>
-                                                {{xx.JumlahMatch}}
-                                            </td>
-                                            <td>
-                                                {{xx.poin}}
-                                            </td>
-                                            <td>
-                                                {{xx.games}}
-                                            </td>
-                                            <td>
-                                                {{xx.selisihGames}}
-                                            </td>
-
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-
+                    <div class="col-2 d-flex justify-content-center align-items-center display-5 mb-2">
+                        <span class="text-center " style="font-weight:800;">vs</span>
+                    </div>
+                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-end ">
+                        <div class="mx-1 mb-2 ">
+                            <span style="font-weight:400; color:white;" class="display-6">{{item.tim2}}</span>
                         </div>
-
-
-
-                        <h1 style="color:black;" class="text-center mt-5">Hasil Pertandingan</h1>
-                        <table class="table baper table-striped">
-                            <thead>
-                                <tr class="text-center">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Pertandingan</th>
-                                    <th scope="col">Hasil</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr v-if="HasilPertandingan.length > 0" v-for="x, index in HasilPertandingan">
-                                    <td scope="row">{{index+1}}</td>
-                                    <td>
-                                        <span class="text-primary">{{x.tanggal}}</span>
-                                        <br>
-                                        <b>{{x.tim1}}</b>
-                                        <span class="text-danger">vs</span>
-                                        <b>{{x.tim2}}</b>
-                                    </td>
-                                    <td>
-                                        {{x.tim1player11}} - {{x.tim1player12}}
-                                        <span class="text-danger">vs</span> {{x.tim2player11}} - {{x.tim2player12}}
-                                        <br> (
-                                        <b>{{x.hasil1}}</b> )
-                                        <hr> {{x.tim1player21}} - {{x.tim1player22}}
-                                        <span class="text-danger">vs</span> {{x.tim2player21}} - {{x.tim2player22}}
-                                        <br> (
-                                        <b>{{x.hasil2}}</b> )
-                                        <hr> {{x.tim1player31}} - {{x.tim1player32}}
-                                        <span class="text-danger">vs</span> {{x.tim2player31}} - {{x.tim2player32}}
-                                        <br> (
-                                        <b>{{x.hasil3}}</b> )
-                                    </td>
-                                    <hr>
-                                </tr>
-
-                            </tbody>
-                        </table>
-
-                        <!-- baper kecil -->
-
-                        <table class="table baperkecil">
-                            <thead>
-                                <tr class="text-center">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Pertandingan</th>
-                                    <th scope="col">Hasil</th>
-                                </tr>
-                            </thead>
-                            <tbody style="font-size:70%;">
-                                <tr v-if="HasilPertandingan.length > 0" v-for="x, index in HasilPertandingan">
-                                    <td scope="row">{{index+1}}</td>
-                                    <td>
-                                        <span class="text-primary">{{x.tanggal}}</span>
-                                        <br>
-                                        <b>{{x.tim1}}</b>
-                                        <span class="text-danger">vs</span>
-                                        <b>{{x.tim2}}</b>
-                                    </td>
-                                    <td>
-                                        {{x.tim1player11}} - {{x.tim1player12}}
-                                        <span class="text-danger">vs</span> {{x.tim2player11}} - {{x.tim2player12}}
-                                        <br> (
-                                        <b>{{x.hasil1}}</b> )
-                                        <hr> {{x.tim1player21}} - {{x.tim1player22}}
-                                        <span class="text-danger">vs</span> {{x.tim2player21}} - {{x.tim2player22}}
-                                        <br> (
-                                        <b>{{x.hasil2}}</b> )
-                                        <hr> {{x.tim1player31}} - {{x.tim1player32}}
-                                        <span class="text-danger">vs</span> {{x.tim2player31}} - {{x.tim2player32}}
-                                        <br> (
-                                        <b>{{x.hasil3}}</b> )
-                                    </td>
-
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-
-                    <!-- hari baper kecil -->
-                    <div class="container baperkecil " v-if="show_event">
-                        <br>
-                        <br>
-
-                        <div class="row text-center mb-3  mx-auto">
-
-
-
-                            <div style="width:120%; margin-left:-20%;" v-if="HasilPertandingan.length > 0" class="mb-1 mx-auto " v-for="x, index in HasilPertandingan">
-
-                                <div class="col-12 text-primary">
-                                    <h5>tanggal {{x.tanggal}}</h5>
-                                </div>
-                                <div class="col-12">
-                                    <h5>{{x.tim1}}
-                                        <span class="text-danger">vs</span> {{x.tim2}}</h5>
-                                </div>
-
-                                <div style="width:110%; left:-4%;" v-if="x.tim1player11" class="row col-12 text-center mx-auto  ">
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 1</h4>
-                                    <div style="width:100%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto1" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player11}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto2" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player12}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-
-
-                                            <span style="font-size:80%; top:-20%;" v-if="x.hasil1">{{x.hasil1}}</span>
-                                            <br>
-                                            <svg v-if="x.fotoA" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal1" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-
-                                            <!-- Modal 1 -->
-                                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoA" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 1 -->
-
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto7" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player11}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto8" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player12}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 2</h4>
-                                    <div style="width:100%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto3" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player21}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto4" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player22}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <span style="font-size:80%;" v-if="x.hasil1">{{x.hasil2}}</span>
-                                            <br>
-                                            <svg v-if="x.fotoB" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal2" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-
-                                            <!-- Modal 2 -->
-                                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoB" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 2 -->
-
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto9" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player21}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto10" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player22}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 3</h4>
-                                    <div style="width:100%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto5" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player31}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto6" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim1player32}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <span style="font-size:80%;" v-if="x.hasil1">{{x.hasil3}}</span>
-                                            <br>
-                                            <svg v-if="x.fotoC" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal3" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-                                            <!-- Modal 3 -->
-                                            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoC" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 3 -->
-
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto11" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player31}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto12" alt="foto">
-                                                    <span style="font-size:80%; ">{{x.tim2player32}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                    <br>
-
-
-
-                                </div>
-                                <hr>
+                        <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:red;" class="display-5">{{item.point2}}</span>
                             </div>
-
                         </div>
-
                     </div>
-
-                    <!-- hari baper kecil -->
-
-
-
-
-                    <!-- hari baper -->
-                    <div class="container baper " v-if="show_event">
-                        <br>
-                        <br>
-
-                        <div class="row text-center mb-3">
-                            <!-- {{events}} -->
-
-                            <!-- <div class="col-12"><h1>TURNAMEN HARI BAKTI PERBENDAHARAAN</h1></div> -->
-
-
-
-
-                            <div v-if="HasilPertandingan.length > 0" class="mb-5" v-for="x, index in HasilPertandingan">
-                                <div class="col-12 text-primary">
-                                    <h2>tanggal {{x.tanggal}}</h2>
-                                </div>
-                                <br>
-                                <div class="col-12">
-                                    <h1>{{x.tim1}}
-                                        <span class="text-danger">vs</span> {{x.tim2}}</h1>
-                                </div>
-                                <div v-if="x.tim1player11" class="row col-12 text-center mt-5 ">
-                                    <h2 class="text-warning">Pertandingan 1</h2>
-                                    <div class="row align-items-center mb-5">
-                                        <div class="col-5 ">
-                                            <div class="row col-12  ">
-                                                <div class="col-6 text-center align-items-top ">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto1" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player11}}</h4>
-                                                </div>
-                                                <div class="col-6 text-center align-items-top">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto2" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player12}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <h1 class="text-danger">vs</h1>
-                                            <br>
-                                            <h1 v-if="x.hasil1">{{x.hasil1}}</h1>
-                                            <svg v-if="x.fotoA" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal11" xmlns="http://www.w3.org/2000/svg"
-                                                width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-
-                                            <!-- Modal 1 -->
-                                            <div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header text-danger">
-                                                            <button type="button" class="btn-close mt-5 " data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoA" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 1 -->
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center align-items-top ">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto7" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player11}}</h4>
-                                                </div>
-                                                <div class="col-6 text-center align-items-top">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto8" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player12}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h2 class="text-warning">Pertandingan 2</h2>
-                                    <div class="row align-items-center mb-5">
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto3" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player21}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto4" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player22}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <h1 class="text-danger">vs</h1>
-                                            <br>
-                                            <h1 v-if="x.hasil2">{{x.hasil2}}</h1>
-                                            <svg v-if="x.fotoB" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal12" xmlns="http://www.w3.org/2000/svg"
-                                                width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-
-                                            <!-- Modal 1 -->
-                                            <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header text-danger">
-                                                            <button type="button" class="btn-close mt-5 " data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoB" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 1 -->
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto9" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player21}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto10" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player22}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h2 class="text-warning">Pertandingan 3</h2>
-                                    <div class="row align-items-center mb-5">
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto5" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player31}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto6" alt="Cinque Terre">
-                                                    <h4>{{x.tim1player32}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <h1 class="text-danger">vs</h1>
-                                            <br>
-                                            <h1 v-if="x.hasil3">{{x.hasil3}}</h1>
-                                            <svg v-if="x.fotoC" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal13" xmlns="http://www.w3.org/2000/svg"
-                                                width="30" height="30" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-
-                                            <!-- Modal 1 -->
-                                            <div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered modal-lg">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header text-danger">
-                                                            <button type="button" class="btn-close mt-5 " data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoC" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 1 -->
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div class="row col-12  mx-auto">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto11" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player31}}</h4>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 100%;" :src="x.foto12" alt="Cinque Terre">
-                                                    <h4>{{x.tim2player32}}</h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <hr>
-
-
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- hari baper -->
-
-
 
 
                 </div>
 
 
-                <!-- Start Turnamen 2022                                         -->
-                <div class="container text-center" v-if="show_event2022">
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-
-                    <div v-if="turnamen2022.length > 2">
-
-
-                        <img @click="showOnTurnamen" style="width:100%;" class="mt-3 mb-3" :src="turnamen2022[0].linkFoto" alt="">
-
-                        <div style="z-index:2;" class="d-flex justify-content-evenly stickyTurnamen mb-5">
-
-                            <button @click="klikKlasemen" style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Klasemen </button>
-                            <button @click="klikJadwal" style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Jadwal </button>
-                            <button @click="klikPeserta" style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Peserta</button>
+                <div class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:white; border-radius:35px;">
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                            <span>{{item.tim1player11}}</span>
+                            <span>/</span>
+                            <span>{{item.tim1player12}}</span>
                         </div>
-
-
-                        <div v-if="turnamenNews">
-                            <b>
-                                <i>
-                                    <h2>{{turnamen2022[3].namaFoto}}</h2>
-                                </i>
-                            </b>
-                            <img style="width:80%;" class="mt-3 mb-3" :src="turnamen2022[3].linkFoto" alt="">
-
-                            <!-- {{pertandingan2022}} -->
-
-                            <div style="z-index:1;" v-if="pertandingan2022.length > 0" class="mb-1 mx-auto " v-for="x, index in pertandingan2022">
-
-                                <div class="col-12 text-primary">
-                                    <h5>tanggal {{x.tanggal}}</h5>
-                                </div>
-                                <div class="col-12">
-                                    <h5>{{x.tim1}}
-                                        <span class="text-danger">vs</span> {{x.tim2}}</h5>
-                                </div>
-
-                                <div style="width:110%; left:-4%;" v-if="x.tim1player11" class="row col-12 text-center mx-auto  ">
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 1</h4>
-                                    <div style="width:80%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto1" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim1player11}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto2" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim1player12}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <span style="font-size:100%; " v-if="x.hasil1">{{x.hasil1}}</span>
-
-                                            <br>
-                                            <svg v-if="x.fotoA" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal1" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-
-                                            <!-- Modal 1 -->
-                                            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoA" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 1 -->
-
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto7" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim2player11}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto8" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim2player12}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 2</h4>
-                                    <div style="width:80%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto3" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim1player21}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto4" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim1player22}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <span style="font-size:100%; " v-if="x.hasil1">{{x.hasil2}}</span>
-                                            <br>
-                                            <svg v-if="x.fotoB" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal2" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-
-                                            <!-- Modal 2 -->
-                                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoB" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 2 -->
-
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto9" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim2player21}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto10" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim2player22}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <h4 class="text-warning  mb-3">Pertandingan 3</h4>
-                                    <div style="width:80%;" class="row align-items-left mb-4 ">
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto5" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim1player31}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto6" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim1player32}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-2 align-self-center text-center">
-                                            <h1 class="text-danger ">vs</h1>
-                                            <span style="font-size:100%; " v-if="x.hasil1">{{x.hasil3}}</span>
-                                            <br>
-                                            <svg v-if="x.fotoC" @click="dataModal = x" data-bs-toggle="modal" data-bs-target="#exampleModal3" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
-                                                <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"
-                                                />
-                                                <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"
-                                                />
-                                            </svg>
-
-                                            <!-- Modal 3 -->
-                                            <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img class="img-fluid" v-if="dataModal" :src="dataModal.fotoC" alt="foto">
-                                                            <!-- <span class="text-primary">{{dataModal}}</span> -->
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Modal 3 -->
-
-                                        </div>
-                                        <div class="col-5 ">
-                                            <div style="width:120%; left:-10%;" class="row col-12  mx-auto ">
-                                                <div class="col-6 text-center">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto11" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim2player31}}</span>
-                                                </div>
-                                                <div class="col-6">
-                                                    <img class="rounded-circle mb-3" style="width: 80%;" :src="x.foto12" alt="foto">
-                                                    <br>
-                                                    <span style="font-size:80%; ">{{x.tim2player32}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                    <br>
-
-
-
-                                </div>
-                                <hr>
-                            </div>
-
-
-                        </div>
-
-                        <div v-if="klasemenTurnamen">
-                            <h1>Klasemen</h1>
-                            <br>
-                            <br>
-                            <br>
-                            <hr>
-                        </div>
-
-
-                        <div v-if="jadwal">
-                            <b>
-                                <h3>JADWAL PERTANDINGAN TURNAMEN TENIS LAPANGAN</h3>
-                                <i>
-                                    <h2>{{turnamen2022[0].namaTurnamen}}</h2>
-                                </i>
-                            </b>
-                            <img style="width:100%;" :src="turnamen2022[2].linkFoto" alt="" class="mt-3 mb-3">
-                        </div>
-
-                        <div v-if="pesertaTurnamen">
-                            <h1>Peserta Turnamen</h1>
-                            <img style="width:100%;" :src="turnamen2022[1].linkFoto" alt="" class="mt-3 mb-3">
-
-                            <!-- <div class="container d-flex flex-wrap justify-content-center">
-                                <div v-for="x in 10">
-                                    <img style="border-radius:100px;" src="https://assets.promediateknologi.com/crop/0x0:0x0/x/photo/2022/03/09/1266931460.jpg"
-                                        class="img-circle mx-3 my-3" alt="Cinque Terre" width="200" height="200">
-                                </div>
-                            </div> -->
-                        </div>
-
-
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
                     </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                        <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim11}}</span>
+                            </div>
+                        </div>
+                        <span class="text-center mb-2" style="font-weight:800; color:red;">vs</span>
+                        <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim21}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                            <span>{{item.tim2player11}}</span>
+                            <span>/</span>
+                            <span>{{item.tim2player12}}</span>
+                        </div>
+                    </div>
+
+
                 </div>
-                <!-- End Turnamen 2022                                         -->
+
+                <div class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:white; border-radius:35px;">
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                            <span>{{item.tim1player21}}</span>
+                            <span>/</span>
+                            <span>{{item.tim1player22}}</span>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                        <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim12}}</span>
+                            </div>
+                        </div>
+                        <span class="text-center mb-2" style="font-weight:800; color:red;">vs</span>
+                        <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim22}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                            <span>{{item.tim2player21}}</span>
+                            <span>/</span>
+                            <span>{{item.tim2player22}}</span>
+                        </div>
+                    </div>
 
 
-                <div v-if="jumbo" style="margin-top: 100px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">
-
-                    <img class="gambar" src="https://gdurl.com/5jc4" alt="">
-                    <p>
-                        <span>Ramudik Cup</span>
-                    </p>
                 </div>
 
-                <section class="banner" v-if="section">
-
-
-
-                    <transition name="slide-fade">
-                        <div v-if="show_turnamen" class="turnament container">
-                            <h1>Treasury Tennis Club Turnaments</h1>
-                            <br>
-                            <br>
-                            <!-- {{turnamens}} -->
-                            <div class="row">
-                                <div class="col-4 mb-5" v-for="x in urutTurnaments" class="column2" @click="klik_satu_turnamen(x)">
-                                    <div style="height:200px;" class="card2">
-                                        <img style="width: 100%; height:100%;" :src="x.foto" alt="">
-                                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
-                                    </div>
-                                    <div class="mt-2">
-                                        <h4>{{x.nama}}</h4>
-                                        <h5>{{x.tanggal}}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-
-
-
-
-
+                <div class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:white; border-radius:35px;">
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                            <span>{{item.tim1player31}}</span>
+                            <span>/</span>
+                            <span>{{item.tim1player32}}</span>
                         </div>
-                    </transition>
-
-
-                    <transition name="slide-fade">
-                        <div v-if="show_ranking" class="ranking">
-                            <h2 style="text-align: center; margin-top: 125px; color:aliceblue; width: 90%; margin-left: auto; margin-right: auto;">Treasury Tennis Club Ranking</h2>
-                            <table style=" border: 1px solid white;">
-                                <thead>
-                                    <tr style=" border: 1px solid white;">
-                                        <th style="width: 20%; border: 1px solid white;">Ranking</th>
-                                        <th style="width: 60%; text-align: center; border: 1px solid white;">Player</th>
-                                        <!-- <th>Age</th> -->
-                                        <th style=" border: 1px solid white;">Points</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr style=" border: 1px solid white; height:40px;" v-for="x,index in rankings" @click="klikPlayer(x)">
-                                        <td style="border: 1px solid white;">{{index+1}}</td>
-                                        <td style="padding-left: 10px; width: 40%; text-align: left; border: 1px solid white;">{{x.player}}</td>
-                                        <!-- <td>48 YO</td> -->
-                                        <td style="border: 1px solid white;">{{x.totalPoint}}</td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </transition>
-
-
-
-                    <!-- <img src="https://gdurl.com/5jc4" alt=""> -->
-                    <transition name="slide-fade">
-                        <div v-if="show_player" class="show_player">
-                            <h1>Treasury Tennis Club Players</h1>
-                            <br>
-                            <br>
-                            <!-- {{urutPlayers}} -->
-                            <div class="row">
-                                <div v-for="x in urutPlayers" style="width: 30%; height: 100%;" @click="klikPlayer(x)">
-                                    <div class="card">
-                                        <img style="width: 100%;" :src="x.foto" alt="">
-                                        <p>{{x.player}}</p>
-                                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
-                                    </div>
-                                </div>
-
-
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                        <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim13}}</span>
                             </div>
                         </div>
-                    </transition>
-                    <!-- {{rankings}}
-                {{players}} -->
-                    <transition name="slide-fade">
-                        <div v-if="show_single_player" class="mx-auto">
-
-                            <br>
-                            <br>
-                            <!-- {{urutPlayers}} -->
-                            <div style="margin-top:100px;" class="row1">
-                                <!-- {{selectedPlayer}} -->
-                                <div class="column1" @click="klikPlayer(x)">
-                                    <div class="card1 row">
-                                        <div class="col-md-6 col-xs-12">
-                                            <img class="gambar-profil mx-auto" :src="selectedPlayer[1].foto_profil" alt="">
-                                        </div>
-                                        <div class="col-md-6 col-xs-12">
-                                            <div class="dataprofil">
-                                                <table class="tabelprofil">
-                                                    <tr>
-                                                        <td width="25%">
-                                                            Nama
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[0].player}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Ranking
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[0].row - 1}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Points
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[0].totalPoint}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Age
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].age}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Turned Pro
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].TurnedPro}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Weight
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].Weight}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Height
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].Height}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Birthplace
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].Birthplace}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Residence
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].Residence}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Plays
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].Plays}}
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            Coach
-                                                        </td>
-                                                        <td>:</td>
-                                                        <td>
-                                                            {{selectedPlayer[1].Coach}}
-                                                        </td>
-                                                    </tr>
-
-
-                                                </table>
-
-                                                <br>
-                                                <br>
-                                                <h1>Latest Match : </h1>
-                                                <!-- {{selectedPlayer}} -->
-                                                <!-- {{ data_match_sort}} -->
-                                                <ul>
-                                                    <li v-for="x in selectedPlayer[2]">{{x.turnamen}} ({{x.babak}}) :
-                                                        <br>
-                                                        <span style="color:black;"> {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}}</span>
-                                                        ( {{x.score}} )</li>
-                                                </ul>
-
-
-                                                <br>
-                                                <h1>Latest Turnament : </h1>
-                                                <!-- {{selectedPlayer}} -->
-                                                <!-- {{ data_match_sort}} -->
-                                                <ul>
-                                                    <li v-for="x in selectedPlayer[3]">{{x.turnamen}} ({{x.capaian}}) :
-                                                        <br>
-                                                        <span style="color:black;"> {{x.point}} Point</li>
-                                                </ul>
-
-                                            </div>
-                                        </div>
-
-
-
-
-                                        <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sit ad quidem vitae ratione corporis, exercitationem itaque cumque dolorum aperiam.</p> -->
-                                    </div>
-                                </div>
-
-
+                        <span class="text-center mb-2" style="font-weight:800; color:red;">vs</span>
+                        <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:30px; width:60px; height:60px;">
+                            <div class="d-flex">
+                                <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim23}}</span>
                             </div>
-
-
                         </div>
-                    </transition>
-
-
-                    <transition name="slide-fade">
-                        <div v-if="show_single_turnamen" class="singleTurnamen">
-                            <h1>{{satu_turnamen[3]}}</h1>
-                            <h2>{{satu_turnamen[5]}}</h2>
-                            <!-- {{satu_turnamen}} -->
-                            <div>
-                                <img class="gambar" :src="satu_turnamen[2]" alt="">
-                            </div>
-                            <br>
-                            <div v-if="satu_turnamen[4]" class="d-grid gap-2">
-                                <a :href="satu_turnamen[4]" target="_blank">
-                                    <button class="btn btn-primary" type="button">Dokumentasi</button>
-                                </a>
-
-                            </div>
-                            <br>
-                            <br>
-                            <h1>Peserta Pertandingan</h1>
-                            <br>
-                            <div class="peserta">
-                                <!-- {{satu_turnamen[0]}} -->
-                                <div v-for="x in satu_turnamen[0]" class="player">
-                                    <!-- <img :src="x.foto_profil" style="border-radius: 50%; width: 50%;" alt=""> -->
-                                    <br>
-                                    <span @click="klikPlayer(x)" class="nama">{{x.player}}</span>
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            <div>
-                                <h1>Hasil Pertandingan</h1>
-                                <br>
-                                <!-- {{satu_turnamen}} -->
-                                <div v-for="x in satu_turnamen[1]" class="player">
-                                    <li>{{x.babak}} : {{x.player1}}/{{x.player2}} vs {{x.player3}}/{{x.player4}}
-                                        <b>({{x.score}})</b>
-                                    </li>
-                                    <br>
-                                </div>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-
-                            <!-- {{satu_turnamen}}
-                    <br> <br>
-                    {{turnamens}} <br><br>
-
-                    {{peserta_turnamen}} <br><br>
-
-                    {{points}} -->
+                    </div>
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                            <span>{{item.tim2player31}}</span>
+                            <span>/</span>
+                            <span>{{item.tim2player32}}</span>
                         </div>
-                    </transition>
+                    </div>
 
 
-
-
-                </section>
-
-            </div>
-        </transition>
-
-
-
-
-
-
-        <transition name="slide-fade">
-            <div class="menu" v-if="show_menu">
-                <div style="display: flex; justify-content: space-between;">
-                    <h1></h1>
-                    <h1 @click="show_menu = false; main = true; section=true; show_player=true;" style="color:red;">x</h1>
                 </div>
-                <ul>
-                    <li>
-                        <a @click="klikRanking" href="#">Rankings</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a @click="klikPlayers" href="#">Players</a>
-                    </li>
-                </ul>
-                <ul>
-                    <li>
-                        <a @click="klikTurnamen" href="#">Turnament</a>
-                    </li>
-                </ul>
-            </div>
-        </transition>
 
-
-
-        <div v-if="show_slide" class="loading text-center">
-            <div class="container mt-2" style="display: flex; justify-content: space-between;">
-                <h1>Treasury Tennis Club Player</h1>
-                <h1 @click="stop_slide" style="color:red;">x</h1>
             </div>
 
-            <div class="container text-center mt-2">
 
-                <h2> {{players[current].player}} </h2>
-                <img style="width: 80%;" class="mx-auto " v-if="players.length > 0" :src="players[current].foto_profil" alt="">
-            </div>
+
         </div>
 
-        <div v-if="show_bola" class="loading text-center">
+        <!-- only on xs -->
+        <div v-for="item in dataPertandingan" class="d-block d-sm-none container text-center mb-3" style="color:white;">
+            <h1>{{item.tanggal}}</h1>
 
-            <div class="container row text-center mt-2">
-                <div class="col-12 text-center button-image">
-                    <img src="bolatennis.png" alt="" class="img-fluit rotating" style="margin-top: 75%; width: 20%" />
+            <div class="container">
+                <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:red; border-radius:35px;">
+                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-center ">
+                        <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                            <div class="d-flex">
+                                <h5 style="font-weight:800; color:red;" class="">{{item.point1}}</h5>
+                            </div>
+                        </div>
+                        <div class="mx-1 mb-2 ">
+                            <span style="font-weight:400; color:white;" class="">{{item.tim1}}</span>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
+                        <span class="text-center " style="font-weight:800;">vs</span>
+                    </div>
+                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-center ">
+                        <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                            <div class="d-flex">
+                                <h5 style="font-weight:800; color:red;" class="">{{item.point2}}</h5>
+                            </div>
+                        </div>
+                        <div class="mx-1 mb-2 ">
+                            <span style="font-weight:400; color:white;" class="">{{item.tim2}}</span>
+                        </div>
+                    </div>
+
+
                 </div>
 
+
+                <div class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:white; border-radius:35px;">
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                            <span>{{item.tim1player11}}</span>
+                            <span>/</span>
+                            <span>{{item.tim1player12}}</span>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                        <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:15px; width:30px; height:25px;">
+                            <div class="d-flex">
+                                <span style="font-weight:600; color:white;" class="">{{item.hasilTim11}}</span>
+                            </div>
+                        </div>
+                        <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:red;">vs</span>
+                        <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:15px; width:30px; height:25px;">
+                            <div class="d-flex ">
+                                <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim21}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                        <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                            <span>{{item.tim2player11}}</span>
+                            <span>/</span>
+                            <span>{{item.tim2player12}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:white; border-radius:35px;">
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                            <span>{{item.tim1player21}}</span>
+                            <span>/</span>
+                            <span>{{item.tim1player22}}</span>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                        <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:15px; width:30px; height:25px;">
+                            <div class="d-flex">
+                                <span style="font-weight:600; color:white;" class="">{{item.hasilTim12}}</span>
+                            </div>
+                        </div>
+                        <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:red;">vs</span>
+                        <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:15px; width:30px; height:25px;">
+                            <div class="d-flex ">
+                                <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim22}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                        <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                            <span>{{item.tim2player21}}</span>
+                            <span>/</span>
+                            <span>{{item.tim2player22}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:white; border-radius:35px;">
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                        <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                            <span>{{item.tim1player31}}</span>
+                            <span>/</span>
+                            <span>{{item.tim1player32}}</span>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                        <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:15px; width:30px; height:25px;">
+                            <div class="d-flex">
+                                <span style="font-weight:600; color:white;" class="">{{item.hasilTim13}}</span>
+                            </div>
+                        </div>
+                        <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:red;">vs</span>
+                        <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:red; border-radius:15px; width:30px; height:25px;">
+                            <div class="d-flex ">
+                                <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim23}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                        <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                            <span>{{item.tim2player31}}</span>
+                            <span>/</span>
+                            <span>{{item.tim2player32}}</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
 
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
-
-
-
-
-
-    <script type="text/javascript">
-        window.addEventListener("scroll", function () {
-            var header = document.querySelector("header");
-            header.classList.toggle("sticky", window.scrollY > 0);
-        })
-
-
-
-    </script>
+    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js " integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM "
+        crossorigin="anonymous "></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="js.js"></script>
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js " integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p
+                            " crossorigin="anonymous "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js " integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF
+                            " crossorigin="anonymous "></script>
+    -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 "
+        crossorigin="anonymous "></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                turnamen2022: ['a', 'b', 'c'],
+                dataPertandingan: [],
+
+
+            },
+            methods: {
+
+            },
+            created() {
+                // ambil data turnamen
+                this.turnamen2022 = [];
+
+                var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=Qturnamen2022 ";
+
+
+                $.getJSON(url, function (json) {
+                    // console.log(json.data);
+                    // console.log(json.data.records)
+                    app.turnamen2022 = json.data;
+                });
+
+                // ambil data pertandingan
+                this.dataPertandingan = [];
+
+                var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=dataPertandingan ";
+
+
+                $.getJSON(url, function (json) {
+                    // console.log(json.data);
+                    // console.log(json.data.records)
+                    app.dataPertandingan = json.data;
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
