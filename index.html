@@ -777,10 +777,17 @@
                     <h1>PESERTA TURNAMEN</h1>
                     <hr>
                 </div>
-                <ul>
+                <ul style="list-style-type: none;">
                     <li v-for="x in Peserta" class="mb-5">
-                        <h1>{{x[0].tim}}</h1>
-                        <h6 v-for="y in x">{{y.nama}}</h6>
+                        <button style="border-radius:30px; height:60px; background-color:#800001; color:white;" class="p-1 mb-2">
+                            <h1 class="mx-3">{{x[0].tim}}</h1>
+                        </button>
+                        <ul>
+                            <li v-for="y in x">
+                                <h6>{{y.nama}}</h6>
+
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
