@@ -39,6 +39,8 @@
 
         <!-- {{Merah}} -->
 
+        <!-- {{filterEs2}} -->
+
         <div v-if="turnamen2022.length > 0 " style="z-index:2;" class="d-flex justify-content-evenly stickyTurnamen mb-2">
 
             <button @click="klikKlasemen" style="width:25%; height:30px; background-color:white; border-color:red;" class="btn  btn-sm ">Klasemen </button>
@@ -60,7 +62,8 @@
                                 </div>
                             </div>
                             <div class="mx-1 mb-2 ">
-                                <span style="font-weight:400; color:white;" class="display-6">{{item.tim1}}</span>
+                                <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white;"
+                                    class="display-6">{{item.tim1}}</span>
                             </div>
                         </div>
                         <div class="col-2 d-flex justify-content-center align-items-center display-5 mb-2">
@@ -68,7 +71,8 @@
                         </div>
                         <div class="col-5 d-flex  flex-wrap align-items-center justify-content-end ">
                             <div class="mx-1 mb-2 ">
-                                <span style="font-weight:400; color:white;" class="display-6">{{item.tim2}}</span>
+                                <span @click="es2=item.tim2" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white;"
+                                    class="display-6">{{item.tim2}}</span>
                             </div>
                             <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
                                 <div class="d-flex">
@@ -215,7 +219,8 @@
                                 </div>
                             </div>
                             <div class="mx-1 mb-2 ">
-                                <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim1}}</span>
+                                <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:12px;"
+                                    class="">{{item.tim1}}</span>
                             </div>
                         </div>
                         <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
@@ -228,7 +233,8 @@
                                 </div>
                             </div>
                             <div class="mx-1 mb-2 ">
-                                <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim2}}</span>
+                                <span @click="es2=item.tim2" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:12px;"
+                                    class="">{{item.tim2}}</span>
                             </div>
                         </div>
 
@@ -483,7 +489,8 @@
                                     </div>
                                 </div>
                                 <div class="mx-1 mb-2 ">
-                                    <span style="font-weight:400; color:white;" class="display-6">{{item.tim1}}</span>
+                                    <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white;"
+                                        class="display-6">{{item.tim1}}</span>
                                 </div>
                             </div>
                             <div class="col-2 d-flex justify-content-center align-items-center display-5 mb-2">
@@ -491,7 +498,8 @@
                             </div>
                             <div class="col-5 d-flex  flex-wrap align-items-center justify-content-end ">
                                 <div class="mx-1 mb-2 ">
-                                    <span style="font-weight:400; color:white;" class="display-6">{{item.tim2}}</span>
+                                    <span @click="es2=item.tim2" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white;"
+                                        class="display-6">{{item.tim2}}</span>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
                                     <div class="d-flex">
@@ -644,7 +652,8 @@
                                     </div>
                                 </div>
                                 <div class="mx-1 mb-2 ">
-                                    <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim1}}</span>
+                                    <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:12px;"
+                                        class="">{{item.tim1}}</span>
                                 </div>
                             </div>
                             <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
@@ -657,7 +666,8 @@
                                     </div>
                                 </div>
                                 <div class="mx-1 mb-2 ">
-                                    <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim2}}</span>
+                                    <span @click="es2=item.tim2" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:12px;"
+                                        class="">{{item.tim2}}</span>
                                 </div>
                             </div>
 
@@ -771,6 +781,7 @@
             </div>
         </div>
 
+
         <div v-if="tampilPeserta">
             <div v-if="turnamen2022.length > 0 " class="container mt-5" style="color:white;">
                 <div class="text-center">
@@ -780,7 +791,7 @@
                 <ul style="list-style-type: none;">
                     <li v-for="x in Peserta" class="mb-5">
                         <button style="border-radius:30px; height:60px; background-color:#800001; color:white;" class="p-1 mb-2">
-                            <h1 class="mx-3">{{x[0].tim}}</h1>
+                            <h1 @click="es2=x[0].tim" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" class="mx-3">{{x[0].tim}}</h1>
                         </button>
                         <ul>
                             <li v-for="y in x">
@@ -793,7 +804,294 @@
             </div>
         </div>
 
+        <!-- galery pertandingan -->
+        <!-- <div class="container text-center" style="color:white;">
+                <h1>GALERY PERTANDINGAN</h1>
+                <div class="row ">
+                    <div v-for="item in dataPertandingan" :key="item.id" class="col-6">
+                        <img :src="item.fotoA" alt="" class="img-fluid mb-2">
+                        <img :src="item.fotoB" alt="" class="img-fluid mb-2">
+                        <img :src="item.fotoC" alt="" class="img-fluid mb-2">
+                    </div>
+                </div>
+            </div> -->
+        <!-- galery pertandingan -->
 
+
+        <!-- Modal Tim Eselon 2 -->
+        <div class="modal fade" id="exampleModalEs2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-body text-center" style="background-color:grey;">
+                        <h1 style="color:white;">{{es2}}</h1>
+
+                        <div v-for="item in filterEs2" class="d-none d-sm-block container text-center mb-5" style="color:white;">
+                            <h1>{{item.tanggal}}</h1>
+                            <div class="container">
+                                <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
+                                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-start ">
+                                        <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                                            <div class="d-flex">
+                                                <span style="font-weight:800; color:#800001;" class="display-5">{{item.menang1}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="mx-1 mb-2 ">
+                                            <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white;"
+                                                class="display-6">{{item.tim1}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 d-flex justify-content-center align-items-center display-5 mb-2">
+                                        <span class="text-center " style="font-weight:800;">vs</span>
+                                    </div>
+                                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-end ">
+                                        <div class="mx-1 mb-2 ">
+                                            <span style="font-weight:400; color:white;" class="display-6">{{item.tim2}}</span>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                                            <div class="d-flex">
+                                                <span style="font-weight:800; color:#800001;" class="display-5">{{item.menang2}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div v-if="item.tim1player11">
+                                    <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                <span>{{item.tim1player11}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim1player12}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim11}}</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim21}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                <span>{{item.tim2player11}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim2player12}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                <span>{{item.tim1player21}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim1player22}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim12}}</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim22}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                <span>{{item.tim2player21}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim2player22}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                <span>{{item.tim1player31}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim1player32}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim13}}</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim23}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                <span>{{item.tim2player31}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim2player32}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div v-for="item in filterEs2" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
+                            <h1>{{item.tanggal}}</h1>
+
+                            <div class="">
+                                <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
+                                    <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
+                                        <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                            <div class="d-flex">
+                                                <h5 style="font-weight:800; color:#800001;" class="">{{item.menang1}}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="mx-1 mb-2 ">
+                                            <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim1}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
+                                        <span class="text-center " style="font-weight:800;">vs</span>
+                                    </div>
+                                    <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
+                                        <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                            <div class="d-flex">
+                                                <h5 style="font-weight:800; color:#800001;" class="">{{item.menang2}}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="mx-1 mb-2 ">
+                                            <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim2}}</span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div v-if="item.tim1player11">
+                                    <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                        style="font-weight:800; background-color:white; border-radius:35px;">
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                                <span>{{item.tim1player11}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim1player12}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                                            <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:600; color:white;" class="">{{item.hasilTim11}}</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
+                                            <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                                <div class="d-flex ">
+                                                    <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim21}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                                            <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                                <span>{{item.tim2player11}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim2player12}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                        style="font-weight:800; background-color:white; border-radius:35px;">
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                                <span>{{item.tim1player21}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim1player22}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                                            <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:600; color:white;" class="">{{item.hasilTim12}}</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
+                                            <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                                <div class="d-flex ">
+                                                    <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim22}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                                            <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                                <span>{{item.tim2player21}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim2player22}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                        style="font-weight:800; background-color:white; border-radius:35px;">
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                            <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                                <span>{{item.tim1player31}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim1player32}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
+                                            <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:600; color:white;" class="">{{item.hasilTim13}}</span>
+                                                </div>
+                                            </div>
+                                            <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
+                                            <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                                <div class="d-flex ">
+                                                    <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim23}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
+                                            <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                                <span>{{item.tim2player31}}</span>
+                                                <span>/</span>
+                                                <span>{{item.tim2player32}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -847,6 +1145,7 @@
             tampilPeserta: true,
             tampilJumbo: true,
             tampilHighlight: true,
+            es2: '',
 
 
         },
@@ -887,11 +1186,7 @@
                     aaa.push({ nama: num.tim2player22, tim: num.tim2 });
                     aaa.push({ nama: num.tim2player31, tim: num.tim2 });
                     aaa.push({ nama: num.tim2player32, tim: num.tim2 });
-
-
-                    // return num * 10;
                 }
-
 
                 var uniqueNames = [];
                 $.each(aaa, function (i, el) {
@@ -907,12 +1202,6 @@
                             (new Set)
                     );
 
-
-
-
-
-
-
                 const result = {};
 
                 for (const { tim, nama } of filtered) {
@@ -920,10 +1209,12 @@
                     result[tim].push({ tim, nama });
                 }
                 return result;
-
-
-
-
+            },
+            filterEs2() {
+                return this.dataPertandingan.filter(post => {
+                    let abc = post.tim1.toLowerCase().includes(this.es2.toLowerCase()) || post.tim2.toLowerCase().includes(this.es2.toLowerCase())
+                    return abc
+                })
             }
 
 
@@ -974,7 +1265,6 @@
 
             var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=Qturnamen2022 ";
 
-
             $.getJSON(url, function (json) {
                 // console.log(json.data);
                 // console.log(json.data.records)
@@ -986,7 +1276,6 @@
 
             var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=dataPertandingan ";
 
-
             $.getJSON(url, function (json) {
                 app.dataPertandingan = json.data;
                 app.dataHistory = json.data;
@@ -996,7 +1285,6 @@
             this.grup = [];
 
             var url = "https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=read&table=QGrupMerahPutih";
-
 
             $.getJSON(url, function (json) {
                 app.grup = json.data;
