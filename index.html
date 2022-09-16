@@ -804,8 +804,15 @@
         <div class="modal fade" id="exampleModalEs2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <div class="modal-body text-center" style="background-color:grey;">
-                        <h1 style="color:white;">{{es2}}</h1>
+                        <!-- <h1 style="color:white;">{{es2}}</h1> -->
+                        <button style="border-radius:40px; height:80px; background-color:#800001; color:white;" class="p-1 mb-2">
+                            <h1 class="mx-3">{{es2}}</h1>
+                        </button>
 
                         <div v-for="item in filterEs2" class="d-none d-sm-block container text-center mb-5" style="color:white;">
                             <h1>{{item.tanggal}}</h1>
