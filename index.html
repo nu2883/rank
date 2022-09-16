@@ -186,27 +186,9 @@
             </div>
 
             <!-- only on xs -->
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
-    </button> -->
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <!-- <div class="modal-header d-flex justify-content-end">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button class="bg-danger btn-xs" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div> -->
-                        <div class="modal-body">
-                            <img style="width:100%;" :src="fotoPertandingan" alt="" class="img-fluid">
-                        </div>
 
-                    </div>
-                </div>
-            </div>
+
             <div v-for="item in Highligh" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
                 <h1>{{item.tanggal}}</h1>
 
@@ -1089,6 +1071,24 @@
 
 
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <!-- <div class="modal-header d-flex justify-content-end">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button class="bg-danger btn-xs" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> -->
+                    <div class="modal-body">
+                        <img style="width:100%;" :src="fotoPertandingan" alt="" class="img-fluid">
+                    </div>
+
                 </div>
             </div>
         </div>
