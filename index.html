@@ -329,7 +329,7 @@
                 <div class="d-none d-sm-block">
                     <table style="background-color:#FFC0CB; width:100%; " class="table table-hover table-responsive">
                         <thead>
-                            <tr>
+                            <tr style="line-height: 20px; height: 20px;">
                                 <th scope="col">#</th>
                                 <th scope="col">NAMA TIM</th>
                                 <th scope="col">MAIN</th>
@@ -360,7 +360,7 @@
 
                 <table style="background-color:#FFC0CB; width:100%; font-size:8px;" class="d-block d-sm-none table table-hover table-responsive">
                     <thead>
-                        <tr>
+                        <tr style="height: 15px; vertical-align: top;">
                             <th scope="col">#</th>
                             <th scope="col">NAMA TIM</th>
                             <th scope="col">MAIN</th>
@@ -424,7 +424,7 @@
 
                 <table style="background-color:white; font-size:8px;" class="table table-hover d-block d-sm-none">
                     <thead>
-                        <tr>
+                        <tr style="height: 15px; vertical-align: top;">
                             <th scope="col">#</th>
                             <th scope="col">NAMA TIM</th>
                             <th scope="col">MAIN</th>
@@ -804,7 +804,7 @@
         <div class="modal fade " id="exampleModalEs2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="height:10px; ">
                         <h5 class="modal-title" id="exampleModalLabel">
 
                         </h5>
@@ -812,177 +812,182 @@
                     </div>
                     <div class="modal-body text-center" style="background-color:grey;">
                         <!-- <h1 style="color:white;">{{es2}}</h1> -->
-                        <button style="border-radius:40px; height:80px; background-color:#800001; color:white;" class="p-1 mb-2">
+                        <div>
+
+                        </div>
+
+                        <button style="border-radius:40px; height:80px; background-color:#800001; color:white;" class="mb-2">
                             <h1 class="mx-3">TIM {{es2}}</h1>
                         </button>
 
-                        <div v-for="item in filterEs2" class="d-none d-sm-block container text-center mb-5" style="color:white;">
-                            <h1>{{item.tanggal}}</h1>
-                            <div class="container">
-                                <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
-                                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-start ">
-                                        <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
-                                            <div class="d-flex">
-                                                <span style="font-weight:800; color:#800001;" class="display-5">{{item.menang1}}</span>
+                        <div class="d-none d-sm-block container text-center mb-5 " style="color:white;">
+                            <div v-for="item in filterEs2">
+                                <h1>{{item.tanggal}}</h1>
+
+                                <div class="container">
+                                    <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
+                                        <div class="col-5 d-flex  flex-wrap align-items-center justify-content-start ">
+                                            <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:#800001;" class="display-5">{{item.menang1}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="mx-1 mb-2 ">
+                                                <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white;"
+                                                    class="display-6">{{item.tim1}}</span>
                                             </div>
                                         </div>
-                                        <div class="mx-1 mb-2 ">
-                                            <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white;"
-                                                class="display-6">{{item.tim1}}</span>
+                                        <div class="col-2 d-flex justify-content-center align-items-center display-5 mb-2">
+                                            <span class="text-center " style="font-weight:800;">vs</span>
                                         </div>
-                                    </div>
-                                    <div class="col-2 d-flex justify-content-center align-items-center display-5 mb-2">
-                                        <span class="text-center " style="font-weight:800;">vs</span>
-                                    </div>
-                                    <div class="col-5 d-flex  flex-wrap align-items-center justify-content-end ">
-                                        <div class="mx-1 mb-2 ">
-                                            <span style="font-weight:400; color:white;" class="display-6">{{item.tim2}}</span>
-                                        </div>
-                                        <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
-                                            <div class="d-flex">
-                                                <span style="font-weight:800; color:#800001;" class="display-5">{{item.menang2}}</span>
+                                        <div class="col-5 d-flex  flex-wrap align-items-center justify-content-end ">
+                                            <div class="mx-1 mb-2 ">
+                                                <span style="font-weight:400; color:white;" class="display-6">{{item.tim2}}</span>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:30px; width:60px; height:60px;">
+                                                <div class="d-flex">
+                                                    <span style="font-weight:800; color:#800001;" class="display-5">{{item.menang2}}</span>
+                                                </div>
                                             </div>
                                         </div>
+
+
                                     </div>
 
+                                    <div v-if="item.tim1player11">
+                                        <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                            style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                                            <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                                <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                    <span>{{item.tim1player11}}</span>
+                                                    <span>/</span>
+                                                    <span>{{item.tim1player12}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                                                <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                    <div class="d-flex">
+                                                        <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim11}}</span>
+                                                    </div>
+                                                </div>
+                                                <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                                                <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                    <div class="d-flex">
+                                                        <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim21}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                                <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                    <span>{{item.tim2player11}}</span>
+                                                    <span>/</span>
+                                                    <span>{{item.tim2player12}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                            style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                                            <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                                <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                    <span>{{item.tim1player21}}</span>
+                                                    <span>/</span>
+                                                    <span>{{item.tim1player22}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                                                <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                    <div class="d-flex">
+                                                        <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim12}}</span>
+                                                    </div>
+                                                </div>
+                                                <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                                                <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                    <div class="d-flex">
+                                                        <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim22}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                                <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                    <span>{{item.tim2player21}}</span>
+                                                    <span>/</span>
+                                                    <span>{{item.tim2player22}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                            style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
+                                            <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                                <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                    <span>{{item.tim1player31}}</span>
+                                                    <span>/</span>
+                                                    <span>{{item.tim1player32}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
+                                                <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                    <div class="d-flex">
+                                                        <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim13}}</span>
+                                                    </div>
+                                                </div>
+                                                <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
+                                                <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
+                                                    <div class="d-flex">
+                                                        <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim23}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
+                                                <div class="mx-1 bg-" style="color:black; font-size:20px;">
+                                                    <span>{{item.tim2player31}}</span>
+                                                    <span>/</span>
+                                                    <span>{{item.tim2player32}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
-
-                                <div v-if="item.tim1player11">
-                                    <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
-                                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
-                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
-                                                <span>{{item.tim1player11}}</span>
-                                                <span>/</span>
-                                                <span>{{item.tim1player12}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
-                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
-                                                <div class="d-flex">
-                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim11}}</span>
-                                                </div>
-                                            </div>
-                                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
-                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
-                                                <div class="d-flex">
-                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim21}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
-                                                <span>{{item.tim2player11}}</span>
-                                                <span>/</span>
-                                                <span>{{item.tim2player12}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
-                                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
-                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
-                                                <span>{{item.tim1player21}}</span>
-                                                <span>/</span>
-                                                <span>{{item.tim1player22}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
-                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
-                                                <div class="d-flex">
-                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim12}}</span>
-                                                </div>
-                                            </div>
-                                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
-                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
-                                                <div class="d-flex">
-                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim22}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
-                                                <span>{{item.tim2player21}}</span>
-                                                <span>/</span>
-                                                <span>{{item.tim2player22}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
-                                        style="cursor: pointer; font-weight:800; background-color:white; border-radius:35px;">
-                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
-                                                <span>{{item.tim1player31}}</span>
-                                                <span>/</span>
-                                                <span>{{item.tim1player32}}</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 d-flex justify-content-center align-items-center display-5 mb-1">
-                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
-                                                <div class="d-flex">
-                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim13}}</span>
-                                                </div>
-                                            </div>
-                                            <span class="text-center mb-2" style="font-weight:800; color:#800001;">vs</span>
-                                            <div class="mx-2 d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:30px; width:60px; height:60px;">
-                                                <div class="d-flex">
-                                                    <span style="font-weight:800; color:white;" class="display-6">{{item.hasilTim23}}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                            <div class="mx-1 bg-" style="color:black; font-size:20px;">
-                                                <span>{{item.tim2player31}}</span>
-                                                <span>/</span>
-                                                <span>{{item.tim2player32}}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
 
 
 
                         </div>
 
-                        <div v-for="item in filterEs2" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
-                            <h1>{{item.tanggal}}</h1>
+                        <div v-for="item in filterEs2" class="d-block d-sm-none  text-center mb-1" style="color:white; margin:2px;">
+                            <h4>{{item.tanggal}}</h4>
 
                             <div class="">
                                 <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
                                     <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
-                                        <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                        <div class="mt-1 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:20px; width:40px; height:40px;">
                                             <div class="d-flex">
                                                 <h5 style="font-weight:800; color:#800001;" class="">{{item.menang1}}</h5>
                                             </div>
                                         </div>
-                                        <div class="mx-1 mb-2 ">
-                                            <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim1}}</span>
+                                        <div class="mx-1 mb-1 ">
+                                            <span style="font-weight:400; color:white; font-size:10px;" class="">{{item.tim1}}</span>
                                         </div>
                                     </div>
                                     <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
                                         <span class="text-center " style="font-weight:800;">vs</span>
                                     </div>
                                     <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
-                                        <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                        <div class="mt-1 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:20px; width:40px; height:40px;">
                                             <div class="d-flex">
                                                 <h5 style="font-weight:800; color:#800001;" class="">{{item.menang2}}</h5>
                                             </div>
                                         </div>
-                                        <div class="mx-1 mb-2 ">
-                                            <span style="font-weight:400; color:white; font-size:12px;" class="">{{item.tim2}}</span>
+                                        <div class="mx-1 mb-1 ">
+                                            <span style="font-weight:400; color:white; font-size:10px;" class="">{{item.tim2}}</span>
                                         </div>
                                     </div>
-
-
                                 </div>
 
                                 <div v-if="item.tim1player11">
-                                    <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                    <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal" class=" mt-1 row flex-wrap d-flex align-items-center m-0 p-0"
                                         style="font-weight:800; background-color:white; border-radius:35px;">
                                         <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
                                             <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
@@ -1013,7 +1018,7 @@
                                         </div>
                                     </div>
 
-                                    <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                    <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal" class=" mt-1 row flex-wrap d-flex align-items-center m-0 p-0"
                                         style="font-weight:800; background-color:white; border-radius:35px;">
                                         <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
                                             <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
@@ -1044,7 +1049,7 @@
                                         </div>
                                     </div>
 
-                                    <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                                    <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal" class=" mt-1 row flex-wrap d-flex align-items-center m-0 p-0"
                                         style="font-weight:800; background-color:white; border-radius:35px;">
                                         <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
                                             <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
