@@ -190,7 +190,7 @@
 
 
             <div v-for="item in Highligh" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
-                <h1>{{item.tanggal}}</h1>
+                <h1 class="mt-4">{{item.tanggal}}</h1>
 
                 <div class="">
                     <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
@@ -623,32 +623,32 @@
                     </div>
                 </div>
                 <div v-for="item in History" class="d-block d-sm-none  text-center mb-3" style="color:white; margin:5px;">
-                    <h1>{{item.tanggal}}</h1>
+                    <h5 class="mt-4">{{item.tanggal}}</h5>
 
                     <div class="">
                         <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
                             <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
-                                <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                <div class="mt-1 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:15px; width:30px; height:30px;">
                                     <div class="d-flex">
                                         <h5 style="font-weight:800; color:#800001;" class="">{{item.menang1}}</h5>
                                     </div>
                                 </div>
-                                <div class="mx-1 mb-2 ">
-                                    <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:12px;"
+                                <div class="mx-1  ">
+                                    <span @click="es2=item.tim1" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:10px;"
                                         class="">{{item.tim1}}</span>
                                 </div>
                             </div>
-                            <div class="col-2 d-flex justify-content-center align-items-center  mb-2">
+                            <div class="mt-1 col-2 d-flex justify-content-center align-items-center  ">
                                 <span class="text-center " style="font-weight:800;">vs</span>
                             </div>
                             <div class="col-5 d-flex  flex-wrap flex-column align-items-center justify-content-center ">
-                                <div class="mt-2 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:25px; width:50px; height:50px;">
+                                <div class="mt-1 d-flex align-items-center justify-content-center align-content-center" style="background-color:white; border-radius:15px; width:30px; height:30px;">
                                     <div class="d-flex">
                                         <h5 style="font-weight:800; color:#800001;" class="">{{item.menang2}}</h5>
                                     </div>
                                 </div>
-                                <div class="mx-1 mb-2 ">
-                                    <span @click="es2=item.tim2" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:12px;"
+                                <div class="mx-1  ">
+                                    <span @click="es2=item.tim2" data-bs-toggle="modal" data-bs-target="#exampleModalEs2" style="font-weight:400; color:white; font-size:10px;"
                                         class="">{{item.tim2}}</span>
                                 </div>
                             </div>
@@ -657,30 +657,30 @@
                         </div>
 
                         <div v-if="item.tim1player11">
-                            <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal1" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                            <div @click="klikFoto(item.fotoA)" data-toggle="modal" data-target="#exampleModal1" class=" mt-1 row flex-wrap d-flex align-items-center m-0 p-0"
                                 style="font-weight:800; background-color:white; border-radius:35px;">
-                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                    <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center ">
+                                    <div class="mx-1  bg-" style="color:black; font-size:8px;">
                                         <span>{{item.tim1player11}}</span>
                                         <span>/</span>
                                         <span>{{item.tim1player12}}</span>
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
-                                    <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="col-4 d-flex justify-content-center align-items-center  ">
+                                    <div class=" d-flex align-items-center justify-content-center  align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
                                         <div class="d-flex">
                                             <span style="font-weight:600; color:white;" class="">{{item.hasilTim11}}</span>
                                         </div>
                                     </div>
-                                    <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
-                                    <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                    <span class="text-center   mx-2" style="font-weight:800; color:#800001;">vs</span>
+                                    <div class="d-flex align-items-center justify-content-center  align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
                                         <div class="d-flex ">
                                             <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim21}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
-                                    <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center  ">
+                                    <div class="mx-1  bg- " style="color:black; font-size:8px; ">
                                         <span>{{item.tim2player11}}</span>
                                         <span>/</span>
                                         <span>{{item.tim2player12}}</span>
@@ -688,30 +688,30 @@
                                 </div>
                             </div>
 
-                            <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal1" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                            <div @click="klikFoto(item.fotoB)" data-toggle="modal" data-target="#exampleModal1" class=" mt-1 row flex-wrap d-flex align-items-center m-0 p-0"
                                 style="font-weight:800; background-color:white; border-radius:35px;">
-                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                    <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center ">
+                                    <div class="mx-1  bg-" style="color:black; font-size:8px;">
                                         <span>{{item.tim1player21}}</span>
                                         <span>/</span>
                                         <span>{{item.tim1player22}}</span>
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
-                                    <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="col-4 d-flex justify-content-center align-items-center  ">
+                                    <div class=" d-flex align-items-center justify-content-center  align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
                                         <div class="d-flex">
                                             <span style="font-weight:600; color:white;" class="">{{item.hasilTim12}}</span>
                                         </div>
                                     </div>
-                                    <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
-                                    <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                    <span class="text-center   mx-2" style="font-weight:800; color:#800001;">vs</span>
+                                    <div class="d-flex align-items-center justify-content-center  align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
                                         <div class="d-flex ">
                                             <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim22}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
-                                    <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center  ">
+                                    <div class="mx-1  bg- " style="color:black; font-size:8px; ">
                                         <span>{{item.tim2player21}}</span>
                                         <span>/</span>
                                         <span>{{item.tim2player22}}</span>
@@ -719,30 +719,30 @@
                                 </div>
                             </div>
 
-                            <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal1" class=" mt-3 row flex-wrap d-flex align-items-center m-0 p-0"
+                            <div @click="klikFoto(item.fotoC)" data-toggle="modal" data-target="#exampleModal1" class=" mt-1 row flex-wrap d-flex align-items-center m-0 p-0"
                                 style="font-weight:800; background-color:white; border-radius:35px;">
-                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2">
-                                    <div class="mx-1 mt-2 bg-" style="color:black; font-size:8px;">
+                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center ">
+                                    <div class="mx-1  bg-" style="color:black; font-size:8px;">
                                         <span>{{item.tim1player31}}</span>
                                         <span>/</span>
                                         <span>{{item.tim1player32}}</span>
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex justify-content-center align-items-center  mb-1">
-                                    <div class=" d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                <div class="col-4 d-flex justify-content-center align-items-center  ">
+                                    <div class=" d-flex align-items-center justify-content-center  align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
                                         <div class="d-flex">
                                             <span style="font-weight:600; color:white;" class="">{{item.hasilTim13}}</span>
                                         </div>
                                     </div>
-                                    <span class="text-center mb-2 mt-2 mx-2" style="font-weight:800; color:#800001;">vs</span>
-                                    <div class="d-flex align-items-center justify-content-center mt-2 align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
+                                    <span class="text-center   mx-2" style="font-weight:800; color:#800001;">vs</span>
+                                    <div class="d-flex align-items-center justify-content-center  align-content-center" style="background-color:#800001; border-radius:15px; width:30px; height:25px;">
                                         <div class="d-flex ">
                                             <span style="font-weight:600; color:white; " class=" ">{{item.hasilTim23}}</span>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center mb-2 ">
-                                    <div class="mx-1 mt-2 bg- " style="color:black; font-size:8px; ">
+                                <div class="col-4 d-flex flex-wrap align-items-center justify-content-center  ">
+                                    <div class="mx-1  bg- " style="color:black; font-size:8px; ">
                                         <span>{{item.tim2player31}}</span>
                                         <span>/</span>
                                         <span>{{item.tim2player32}}</span>
@@ -758,7 +758,7 @@
 
         <div v-if="tampilJadwal">
             <div class="container">
-                <img v-if="turnamen2022.length > 0 " style="width:100%; margin-top:0;" class="mt-5 mb-3" :src="turnamen2022[2].linkFoto"
+                <img v-if="turnamen2022.length > 0 " style="width:100%; margin-top:0;" class="mt-5 mb-3 " :src="turnamen2022[2].linkFoto"
                     alt="">
             </div>
         </div>
@@ -822,7 +822,7 @@
 
                         <div class="d-none d-sm-block container text-center mb-5 " style="color:white;">
                             <div v-for="item in filterEs2">
-                                <h1>{{item.tanggal}}</h1>
+                                <h1 class="mt-4">{{item.tanggal}}</h1>
 
                                 <div class="container">
                                     <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
@@ -957,7 +957,7 @@
                         </div>
 
                         <div v-for="item in filterEs2" class="d-block d-sm-none  text-center mb-1" style="color:white; margin:2px;">
-                            <h4>{{item.tanggal}}</h4>
+                            <h4 class="mt-4">{{item.tanggal}}</h4>
 
                             <div class="">
                                 <div class=" row flex-wrap d-flex align-items-center m-0 p-0" style="font-weight:800; background-color:#800001; border-radius:35px;">
