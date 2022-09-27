@@ -37,7 +37,7 @@
 
         <!-- {{turnamen2022}} -->
 
-        <!-- {{Merah}} -->
+        <!-- {{urll}} -->
 
         <!-- {{filterEs2}} -->
         <!-- tes
@@ -1174,6 +1174,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 <script>
@@ -1195,6 +1197,10 @@
             es2: '',
             link1: false,
             pass: '',
+            inputan: {},
+            urll: '',
+
+
 
 
         },
@@ -1272,9 +1278,13 @@
         },
         methods: {
             save() {
-                if (this.pass == 'nurdin') {
+                if (this.pass == 'Nurdin') {
                     this.link1 = true;
+                } else {
+                    this.link1 = false;
                 }
+
+                this.pass = '';
             },
             showOff() {
                 this.tampilAtas = true;
@@ -1313,10 +1323,79 @@
             },
             klikDokumentasi() {
                 window.location = 'https://drive.google.com/drive/folders/1DFNKczutU3TFWWnIr3NuOBiaFMZ-uIfK';
-            }
+            },
+            simpanLog() {
+
+
+                // if (this.datProg.tglProgress && this.datProg.progres) {
+                let d = new Date();
+                var tgl = d.getDate();
+                var bln = d.getMonth();
+                var thn = d.getFullYear();
+                var jam = d.getHours();
+                var menit = d.getMinutes();
+                var detik = d.getSeconds();
+
+                var waktu1 = thn + "-" + bln + "-" + tgl + "   (" + jam + ":" + menit + ":" + detik + ")"
+                // alert(waktu1)
+                this.inputan.waktu = waktu1;
+
+                // var ikegiatan = this.flash1.id.toString();
+                // var ideadline = this.tglProgres.toString();
+                // var idetail = this.progres.toString();
+                // this.datProg.id = waktu1;
+                // this.datProg.idMasalah = this.flash1.id.toString();
+
+                // this.datProg.progress = encodeURIComponent(this.datProg.progress);
+                // this.datProg.log = 1;
+
+                // var istatus = 1;
+                // var aaaaaaaaaaa = JSON.stringify(this.datProg);
+                // console.log(aaaaaaaaaaa);
+                var lin = `https://script.google.com/macros/s/AKfycbx6jx9ZCEFAe7tdpSnNAvzyLkEB__oEsA08wA3YhBcBbH-aDZZhK6la_yvEUh3fUWf17g/exec?action=insert&table=log&data=${JSON.stringify(this.inputan)}`;
+
+                // var lin = `https://script.google.com/macros/s/AKfycbyZFjDBgwz2oE_pEwKb3dW8GQsAm1snHxYpFIQZFFVIN7Ur3y6nhQ1hDYXJWvX5xSJZNw/exec?action=insert&table=progress&data={"id":${waktu1}, "idMasalah":"'${ikegiatan}","tglprogress":"'${ideadline}","progress":"'${idetail}","log":"1"}`;
+
+                // this.test = lin;
+                this.urll = lin;
+
+                // fetch(lin)
+                //   .then(() => {
+                //     app.progres = "";
+                //     app.datProg.progress = decodeURIComponent(app.datProg.progress);
+                //     app.dataProgress.push(app.datProg);
+                //   })
+
+
+                //metode lama pake ajax
+                $.ajax({
+                    type: "GET",
+                    url: lin,
+                    crossDomain: true,
+                    dataType: "jsonp",
+                    dataType: "text",
+                    success: function (resultData) {
+                        //   alert("Save Complete");
+                        // app.progres = "";
+
+                        // app.datProg.progress = decodeURIComponent(app.datProg.progress);
+                        // app.dataProgress.push(app.datProg);
+
+
+                    },
+                });
+
+
+
+                // alert("Progress Berhasil di Simpan");
+
+            },
 
         },
         created() {
+            // create log
+            this.simpanLog();
+
             // ambil data turnamen
             this.turnamen2022 = [];
 
