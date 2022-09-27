@@ -792,6 +792,33 @@
             </div>
         </div>
 
+        <!-- input password -->
+        <div class="container">
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="input-group mb-3">
+                <input v-model="pass" type="text" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button @click="save" class="btn btn-outline-secondary" type="button" id="button-addon2">Save</button>
+
+            </div>
+            <div v-if="link1">
+                <button type="button" class="btn btn-outline-primary">Primary</button>
+                <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                <a href="/link.html">
+                    <button type="button" class="btn btn-outline-success">Success</button>
+                </a>
+                <button type="button" class="btn btn-outline-danger">Danger</button>
+                <button type="button" class="btn btn-outline-warning">Warning</button>
+                <button type="button" class="btn btn-outline-info">Info</button>
+                <button type="button" class="btn btn-outline-light">Light</button>
+                <button type="button" class="btn btn-outline-dark">Dark</button>
+            </div>
+        </div>
+        <!-- input password -->
+
+
         <!-- galery pertandingan -->
         <!-- <div class="container text-center" style="color:white;">
                 <h1>GALERY PERTANDINGAN</h1>
@@ -1166,6 +1193,8 @@
             tampilJumbo: true,
             tampilHighlight: true,
             es2: '',
+            link1: false,
+            pass: '',
 
 
         },
@@ -1242,6 +1271,11 @@
 
         },
         methods: {
+            save() {
+                if (this.pass == 'nurdin') {
+                    this.link1 = true;
+                }
+            },
             showOff() {
                 this.tampilAtas = true;
                 this.tampilKlasemen = false;
